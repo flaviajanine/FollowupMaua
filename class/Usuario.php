@@ -1,6 +1,6 @@
 <?php 
 
-class Cadastrar {
+class Usuario {
 
 	private $nome;
 	private $sobrenome;
@@ -10,23 +10,23 @@ class Cadastrar {
 
 
 # 	------------- GET ----------------
-	public function getNome():string {
+	public function getNome() {
 		return $this->nome;
 	}
 
-	public function getSobrenome():string {
+	public function getSobrenome() {
 		return $this->sobrenome;
 	}
 
-	public function getDataNascimento():string {
+	public function getDataNascimento() {
 		return $this->data_nascimento;
 	}
 
-	public function getEmail():string {
+	public function getEmail() {
 		return $this->email;
 	}
 
-	public function getSenha():string {
+	public function getSenha() {
 		return $this->senha;
 	}
 
@@ -58,10 +58,10 @@ class Cadastrar {
 
 	# --------EXEMPLO DE SELECT UTILIZANDO DAO ------ 
 
-	public function loadById($nome){
+	public function loadByName($nome){
 
 		$sql = new Sql();
-		$result = $sql->select("SELECT * FROM tb_usuario WHERE id_usuario = :NOME",array(":NOME"=>$nome 
+		$result = $sql->select("SELECT * FROM tb_usuario WHERE nome = :NOME",array(":NOME"=>$nome 
 			));
 
 		if(isset($result[0])){
@@ -79,7 +79,13 @@ class Cadastrar {
 
 	public function __toString(){
 
-		return json_encode(array(""=> , ));
+		return json_encode(array(
+			"nome"=>$this->getNome() ,
+			"sobrenome"=>$this->getSobrenome() ,
+			"data_nascimento"=>$this->getDataNascimento()->format("d/m/Y H:i:s") ,
+			"email"=>$this->getEmail() ,
+			"senha"=>$this->getSenha() ,
+		 ));
 	}
 
 	}

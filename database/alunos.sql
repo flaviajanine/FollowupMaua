@@ -22,6 +22,19 @@ create table tb_aluno(
 	curso varchar(50) not null	
 );
 
+###--------------------ARRUMAR----------------------------
+create table tb_professor(
+	id_professor int not null primary key auto_increment,
+	nome_professor varchar(50)
+); 
+
+create table tb_monitoria(
+	cod_monitoria varchar(10),
+	id_professor int,
+	horario_monitoria datetime	
+);
+
+###-------------------------------------------------------
 create table tb_disciplina(
 	cod_disciplina varchar(10),
 	nome_disciplina varchar(50),
