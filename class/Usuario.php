@@ -57,6 +57,7 @@ class Usuario {
 
 
 	# --------EXEMPLO DE SELECT UTILIZANDO DAO ------ 
+	//Traz uma informação carregada pelo nome
 
 	public function loadByName($nome){
 
@@ -66,16 +67,73 @@ class Usuario {
 
 		if(isset($result[0])){
 
-			$row = $result[0];
-
-			$this->setNome($row['nome']);
-			$this->setSobrenome($row['sobrenome']);
-			$this->setDataNascimento(new DateTime($row['data_nascimento']));
-			$this->setEmail($row['email']);
-			$this->setSenha($row['senha']);
+			$this->setData($result[0]);
 		}
 
 	}
+
+	//Traz uma lista buscando pelo nome
+
+	public static function getList(){
+		$sql = new Sql();
+		return $sql->select("SELECT * FROM tb_usuario ORDER BY nome");
+	}
+
+	//traz uma lista buscando pelo email
+
+	public static function search($login){
+
+		$sql = new Sql();
+		return $sql->select("SELECT * FROM tb_usuario WHERE email LIKE :SEARCH ORDER BY email",array(':SEARCH'=>"%".$login."%"));
+	}
+
+
+
+	//Busca uma lista de acordo com usuario e senha trazendo as informações do $row
+
+	public function login($login,$password){
+		$sql = new Sql();
+		$result = $sql->select("SELECT * FROM tb_usuario WHERE email = :LOGIN AND senha = :PASSWORD",array(":LOGIN"=>$login ,":PASSWORD"=>$password
+			));
+
+		if(isset($result[0])){
+
+			$this->setData($result[0]);
+
+		}
+
+		else {
+			throw new Exception("Login ou Senha invalidos");
+			
+		}
+
+	}
+
+	public function setData($data){
+
+		$this->setNome($data['nome']);
+		$this->setSobrenome($data['sobrenome']);
+		$this->setDataNascimento(new DateTime($data['data_nascimento']));
+		$this->setEmail($data['email']);
+		$this->setSenha($data['senha']);
+
+	}
+
+/*
+	public function insert(){
+
+		$sql = new Sql();
+		$result = $sql->select("CALL sp_usuario_insert(:LOGIN,:PASSWORD)",array(':LOGIN'=>$this->getEmail(),'PASSWORD'=>$this->getSenha()
+			));
+
+		if(isset($result[0])){
+
+			$this->setData($result[0]);
+		}
+
+	}
+
+*/
 
 	public function __toString(){
 
@@ -85,7 +143,7 @@ class Usuario {
 			"data_nascimento"=>$this->getDataNascimento()->format("d/m/Y H:i:s") ,
 			"email"=>$this->getEmail() ,
 			"senha"=>$this->getSenha() ,
-		 ));
+			));
 	}
 
-	}
+}
