@@ -1,5 +1,8 @@
 <?php 
 
+//Classe usuario que executa diversas funcoes, como busca, validacao, insercao de dados e etc.
+
+
 class Usuario {
 
 	private $nome;
@@ -87,6 +90,15 @@ class Usuario {
 		return $sql->select("SELECT * FROM tb_usuario WHERE email LIKE :SEARCH ORDER BY email",array(':SEARCH'=>"%".$login."%"));
 	}
 
+	//Validar Email no banco de dados
+
+	public static function validar($email){
+
+		$sql = new Sql();
+		return $sql->select("SELECT * FROM tb_usuario WHERE email LIKE :EMAIL",array(':EMAIL' => $email));
+
+	}
+
 
 
 	//Busca uma lista de acordo com usuario e senha trazendo as informações do $row
@@ -113,34 +125,68 @@ class Usuario {
 
 		$this->setNome($data['nome']);
 		$this->setSobrenome($data['sobrenome']);
-		$this->setDataNascimento(new DateTime($data['data_nascimento']));
+		//$this->setDataNascimento(new Date($data['data_nascimento']));
 		$this->setEmail($data['email']);
 		$this->setSenha($data['senha']);
 
 	}
 
-/*
+//========AQUI=======================================
 	public function insert(){
-
 		$sql = new Sql();
-		$result = $sql->select("CALL sp_usuario_insert(:LOGIN,:PASSWORD)",array(':LOGIN'=>$this->getEmail(),'PASSWORD'=>$this->getSenha()
-			));
+		$sql->query("INSERT INTO tb_usuario(nome,sobrenome,email,senha) values (:NOME,:SOBRENOME,:EMAIL,:SENHA)", array(
+			':NOME'=>$this->getNome(),
+			':SOBRENOME'=>$this->getSobrenome(),
+			':EMAIL'=>$this->getEmail(),
+			':SENHA'=>$this->getSenha()
+		));
 
-		if(isset($result[0])){
-
-			$this->setData($result[0]);
 		}
 
+
+
+	
+
+	public function update($login, $password){
+		$this->setEmail($login);
+		$this->setSenha($password);
+		$sql = new Sql();
+		$sql->query("UPDATE tb_usuario SET email = :LOGIN, senha = :PASSWORD WHERE nome = :NOME", array(
+			':LOGIN'=>$this->getEmail(),
+			':PASSWORD'=>$this->getSenha(),
+			':NOME'=>$this->getNome()
+		));
 	}
 
-*/
+	public function delete(){
+		$sql = new Sql();
+		$sql->query("DELETE FROM tb_usuario WHERE nome = :NOME", array(
+			':NOME'=>$this->getNome()
+		));
+		$this->setNome(0);
+		$this->setEmail("");
+		$this->setSenha("");
+		$this->setDataNascimento(new DateTime());
+	}
 
+
+	public function __construct($nome = "",$sobrenome = "",$email = "", $senha = ""){
+	
+		$this->setNome($nome);
+		$this->setSobrenome($sobrenome);
+		//$this->setDataNascimento($data_nascimento);
+		$this->setEmail($email);
+		$this->setSenha($senha);
+	}
+
+//===================================================
 	public function __toString(){
 
+		
 		return json_encode(array(
 			"nome"=>$this->getNome() ,
 			"sobrenome"=>$this->getSobrenome() ,
-			"data_nascimento"=>$this->getDataNascimento()->format("d/m/Y H:i:s") ,
+		//	"data_nascimento"=>$this->getDataNascimento(),//->format("d/m/Y H:i:s") ,
 			"email"=>$this->getEmail() ,
 			"senha"=>$this->getSenha() ,
 			));

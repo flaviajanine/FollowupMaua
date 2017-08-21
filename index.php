@@ -4,6 +4,7 @@
 
 require_once("config.php");
 
+echo "BEM-VINDO A PAGINA INICIAL";
 
 //Carrega um usuario
 /*
@@ -30,19 +31,27 @@ echo json_encode($busca);
 
 //Carrega um usuario usando login e senha
 
-
+/*
 $usuario = new Usuario();
 $usuario->login("luiz-gustavo10@hotmail.com","123456");
 echo $usuario;
+*/
 
+//Criando um novo usuário
+//$aluno = new Usuario(/*"$nome","$sobrenome","$date","$senha","$email"*/);
+//$aluno->insert();
+//echo $aluno;
 
-
-//Insere dados com storaged procedure
 /*
-$aluno= new Usuario();
-$aluno->setEmail("Gustavo");
-$aluno->setSenha("Gx1");
-$aluno->insert();
-
-echo $aluno;
+//Alterar um usuário
+$usuario = new Usuario();
+$usuario->loadByName("Gus");
+$usuario->update("professor", "!@#$%¨&*");
+echo $usuario;
+*/
+/*
+$usuario = new Usuario();
+$usuario->loadByName("Luiz");
+$usuario->delete();
+echo $usuario;
 */

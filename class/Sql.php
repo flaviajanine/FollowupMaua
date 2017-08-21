@@ -30,6 +30,7 @@ class Sql extends PDO {
 
 	//Metodo que faz a execução do comando no banco de dados.  
 	//rawQuery - comando sql que trataremos depois 
+	//Só executao "metodo" , não mostra.
 	public function query($rawQuery,$params = array()){
 
 		$stmt = $this->conn->prepare($rawQuery);
@@ -42,6 +43,8 @@ class Sql extends PDO {
 		
 
 	}
+
+	//Executa o "método" e mostra.
 
 	public function select($rawQuery,$params=array()):array{
 
