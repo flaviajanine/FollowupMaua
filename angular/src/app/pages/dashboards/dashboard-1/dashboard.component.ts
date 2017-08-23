@@ -6,10 +6,6 @@ const BREADCRUMBS: any[] = [
   {
     title: 'Main',
     link: '#'
-  },
-  {
-    title: 'Dashboard',
-    link: '#'
   }
 ];
 const folders: any[] = [

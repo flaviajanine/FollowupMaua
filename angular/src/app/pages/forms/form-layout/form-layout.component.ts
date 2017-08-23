@@ -3,15 +3,15 @@ import { SharedService } from '../../../layouts/shared-service';
 
 const BREADCRUMBS: any[] = [
   {
-    title: 'UI Elements',
+    title: 'Main',
     link: '#'
   },
   {
-    title: 'Forms',
+    title: 'Notas',
     link: '#'
   },
   {
-    title: 'Form layout',
+    title: 'Inserir notas',
     link: ''
   }
 ];
@@ -21,7 +21,7 @@ const BREADCRUMBS: any[] = [
   styleUrls: ['./form-layout.component.scss']
 })
 export class PageFormLayoutComponent implements OnInit {
-  pageTitle: string = 'Form layout';
+  pageTitle: string = 'Inserir notas';
   breadcrumb: any[] = BREADCRUMBS;
 
   constructor( private _sharedService: SharedService ) {

@@ -10,5 +10,8 @@ export class PageSignUp1Component implements OnInit {
 
   ngOnInit() { }
 
-  onSubmit() { }
+  onSubmit() {
+
+
+   }
 }
