@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PageSignUp1Component } from './sign-up-1.component';
 
-
+// esse arquivo é usado só para testes de unidade!!
+// não confundir com o component.ts!!!
 
 describe('PageSignUp1Component', () => {
   let component: PageSignUp1Component;
