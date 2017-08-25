@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-
+import { Observable } from 'rxjs/Observable';
+import { AppError } from './../common/app-error'
+import {NotFoundError} from './../common/not-found-error'
+import 'rxjs/add/operator/catch';
+// factories
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 
@@ -17,8 +22,13 @@ export class DataService {
      return this.http.get(this.url);
   }
   
-  createPost(post) {
-    return this.http.post(this.url, JSON.stringify(post));
+  postForm(post) {
+    return this.http.post(this.url, JSON.stringify(post))
+    .catch((error: Response) => {
+      if (error.status === 404)
+        return Observable.throw(new NotFoundError());
+      return Observable.throw(new AppError(error));
+    });
   }
 
 }

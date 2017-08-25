@@ -1,3 +1,5 @@
+import { AppErrorHandler }                  from './common/app-error-handler';
+import { ErrorHandler }                     from '@angular/core';
 import { BrowserModule }                    from '@angular/platform-browser';
 import { RouterModule }                     from '@angular/router';
 import { NgModule }                         from '@angular/core';
@@ -49,7 +51,10 @@ import {DataService} from './services/data.service'
     NiComponentsModule,
     PagesModule
   ],
-  providers: [DataService],
+  providers: [ 
+    DataService,
+    { provide: ErrorHandler, useClass: AppErrorHandler}
+  ],
   bootstrap: [ AppComponent ]
 })
 
