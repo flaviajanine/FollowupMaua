@@ -1,27 +1,38 @@
-<ni-card [title]="'Create your account'" [align]="'center'">
+<ni-card [title]="'Cadastre-se'" [align]="'center'">
+  <!-- o title aqui é uma classe!! -->
   <form (ngSubmit)="onSubmit()">
+    
     <md-input-container>
-      <input mdInput placeholder="Email address" value="">
+      <input mdInput placeholder="Nome" value="">{{nome}}
+    </md-input-container>
+
+    
+    <md-input-container>
+      <input mdInput placeholder="Sobrenome" value="">{{sobrenome}}
+    </md-input-container>
+
+    <!--
+    <md-input-container>
+      <input mdInput placeholder="Data de Nascimento" value={{date}}>
+    </md-input-container>
+    -->
+
+    <md-input-container>
+      <input mdInput placeholder="E-mail" value="">{{email}}
     </md-input-container>
 
     <md-input-container>
-      <input mdInput placeholder="Password" value="">
+      <input mdInput placeholder="Senha" value="">={{senha}}
     </md-input-container>
 
     <md-input-container>
-      <input mdInput placeholder="Confirm Password" value="">
+      <input mdInput placeholder="Confirmar Senha" value="">{{confirmar}}
     </md-input-container>
-
-    <div class="text-left mb-module">
-      <md-checkbox>
-        I have read and agree to the terms of service.
-      </md-checkbox>
-    </div>
 
     <button md-raised-button color="primary" type="submit">Sign Up</button>
 
     <div class="additional-info">
-      Already have an account?
+      Já está cadastrado?
       <a href="extra-layout/sign-in">Sign in</a>
     </div>
   </form>

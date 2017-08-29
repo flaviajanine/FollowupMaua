@@ -10,13 +10,7 @@ export const MENU: any = [
       bg: '#ea8080',
       color: 'rgba(0,0,0,.87)'
     },
-    routing: '/default-layout/dashboard',
-    sub: [
-      {
-        title: 'Dashboard v1',
-        routing: '/default-layout/dashboard'
-      },
-    ]
+    routing: '/default-layout/dashboard'
    },
   {
     title: 'Calendário',
@@ -36,20 +30,8 @@ export const MENU: any = [
     },
     sub: [
       {
-        title: 'Simple table',
-        routing: '/default-layout/simple-table'
-      },
-      {
-        title: 'Editing table',
-        routing: '/default-layout/editing-table'
-      },
-      {
-        title: 'Filtering table',
-        routing: '/default-layout/filtering-table'
-      },
-      {
-        title: 'Pagination table',
-        routing: '/default-layout/pagination-table'
+        title: 'Inserir Notas',
+        routing: '/default-layout/form-layout'
       },
       {
         title: 'Bootstrap tables',
