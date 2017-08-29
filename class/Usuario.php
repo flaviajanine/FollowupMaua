@@ -10,9 +10,14 @@ class Usuario {
 	private $data_nascimento;
 	private $email;
 	private $senha;
-
+	private $ra;
+	private $curso;
 
 # 	------------- GET ----------------
+	public function getRa() {
+		return $this->ra;
+	}
+
 	public function getNome() {
 		return $this->nome;
 	}
@@ -33,7 +38,16 @@ class Usuario {
 		return $this->senha;
 	}
 
+	public function getCurso() {
+		return $this->curso;
+	}
+
 #  	------------- SET -----------------
+	public function setRa($values){
+
+		$this->ra = $values;
+	}
+
 	public function setNome($values){
 
 		$this->nome = $values;
@@ -58,6 +72,10 @@ class Usuario {
 		$this->senha = $values;
 	}
 
+	public function setCurso($values){
+
+		$this->curso = $values;
+	}
 
 	# --------EXEMPLO DE SELECT UTILIZANDO DAO ------ 
 	//Traz uma informação carregada pelo nome
@@ -65,7 +83,7 @@ class Usuario {
 	public function loadByName($nome){
 
 		$sql = new Sql();
-		$result = $sql->select("SELECT * FROM tb_usuario WHERE nome = :NOME",array(":NOME"=>$nome 
+		$result = $sql->select("SELECT * FROM tb_aluno WHERE nome_aluno = :NOME",array(":NOME"=>$nome 
 			));
 
 		if(isset($result[0])){
@@ -92,53 +110,64 @@ class Usuario {
 
 	//Validar Email no banco de dados
 
-	public static function validar($email){
+	public static function validar_email($email){
 
 		$sql = new Sql();
-		return $sql->select("SELECT * FROM tb_usuario WHERE email LIKE :EMAIL",array(':EMAIL' => $email));
+		return $sql->select("SELECT * FROM tb_aluno WHERE email_aluno LIKE :EMAIL",array(':EMAIL' => $email));
 
 	}
 
+	//Validar Senha no Banco de Dados
+
+	public static function validar_senha($senha){
+
+		$sql = new Sql();
+		return $sql->select("SELECT * FROM tb_aluno WHERE senha_aluno LIKE :SENHA" ,array(':SENHA' => $senha));
+
+	}
 
 
 	//Busca uma lista de acordo com usuario e senha trazendo as informações do $row
 
 	public function login($login,$password){
 		$sql = new Sql();
-		$result = $sql->select("SELECT * FROM tb_usuario WHERE email = :LOGIN AND senha = :PASSWORD",array(":LOGIN"=>$login ,":PASSWORD"=>$password
+		$result = $sql->select("SELECT * FROM tb_aluno WHERE email_aluno = :LOGIN AND senha_aluno = :PASSWORD",array(":LOGIN"=>$login ,":PASSWORD"=>$password
 			));
 
 		if(isset($result[0])){
 
-			$this->setData($result[0]);
+		header('Location: index.php');
 
 		}
 
 		else {
-			throw new Exception("Login ou Senha invalidos");
 			
+			$data = array('acesso'=>$login, 'senha'=>$password);
+			echo json_encode($data);
+
 		}
 
 	}
 
 	public function setData($data){
 
-		$this->setNome($data['nome']);
-		$this->setSobrenome($data['sobrenome']);
-		//$this->setDataNascimento(new Date($data['data_nascimento']));
-		$this->setEmail($data['email']);
-		$this->setSenha($data['senha']);
+		$this->setRa($data['ra_aluno']);
+		$this->setNome($data['nome_aluno']);
+		$this->setEmail($data['email_aluno']);
+		$this->setSenha($data['senha_aluno']);
+		$this->setCurso($data['curso_aluno']);
 
 	}
 
 //========AQUI=======================================
 	public function insert(){
 		$sql = new Sql();
-		$sql->query("INSERT INTO tb_usuario(nome,sobrenome,email,senha) values (:NOME,:SOBRENOME,:EMAIL,:SENHA)", array(
+		$sql->query("INSERT INTO tb_aluno(ra_aluno,nome_aluno,email_aluno,senha_aluno,curso_aluno) values (:RA,:NOME,:EMAIL,:SENHA,:CURSO)", array(
+			':RA'=>$this->getRa(),
 			':NOME'=>$this->getNome(),
-			':SOBRENOME'=>$this->getSobrenome(),
 			':EMAIL'=>$this->getEmail(),
-			':SENHA'=>$this->getSenha()
+			':SENHA'=>$this->getSenha(),
+			':CURSO'=>$this->getCurso()
 		));
 
 		}
@@ -170,13 +199,13 @@ class Usuario {
 	}
 
 
-	public function __construct($nome = "",$sobrenome = "",$email = "", $senha = ""){
+	public function __construct($ra = "",$nome = "",$email = "", $senha = "",$curso = ""){
 	
+		$this->setRa($ra);
 		$this->setNome($nome);
-		$this->setSobrenome($sobrenome);
-		//$this->setDataNascimento($data_nascimento);
 		$this->setEmail($email);
 		$this->setSenha($senha);
+		$this->setCurso($curso);
 	}
 
 //===================================================
@@ -184,11 +213,11 @@ class Usuario {
 
 		
 		return json_encode(array(
+			"ra"=>$this->getRa(),
 			"nome"=>$this->getNome() ,
-			"sobrenome"=>$this->getSobrenome() ,
-		//	"data_nascimento"=>$this->getDataNascimento(),//->format("d/m/Y H:i:s") ,
 			"email"=>$this->getEmail() ,
 			"senha"=>$this->getSenha() ,
+			"curso"=>$this->getCurso()
 			));
 	}
 

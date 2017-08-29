@@ -2,18 +2,19 @@
 
 //Exemplo de uso das classes e execucao de uma query
 
+
 require_once("config.php");
 
 echo "BEM-VINDO A PAGINA INICIAL";
 
 //Carrega um usuario
+
 /*
-
 $nome = new Usuario();
-$nome->loadByName("Gus");
+$nome->loadByName("Flavia");
 echo $nome;
-
 */
+
 
 //Carrega uma lista de usuarios
 /*
