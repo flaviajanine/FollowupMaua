@@ -1,39 +1,50 @@
 <ni-card [title]="'Cadastre-se'" [align]="'center'">
   <!-- o title aqui é uma classe!! -->
-  <form (ngSubmit)="onSubmit()">
-    
-    <md-input-container>
-      <input mdInput placeholder="Nome" value="">{{nome}}
-    </md-input-container>
+  <!-- <form (ngSubmit)="onSubmit()"> -->
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-    
-    <md-input-container>
-      <input mdInput placeholder="Sobrenome" value="">{{sobrenome}}
-    </md-input-container>
+    <div class="form-group">
+      <md-input-container>
+        <input mdInput placeholder="Nome" id="nome" formControlName="nome" value="" class="form-control">
+        <div *ngIf="nome.touched && nome.invalid" class="alert alert-danger">
+          <div *ngIf="nome.errors.required">Preenchimento do nome é necessário!</div>
+        </div>
+      </md-input-container>
+    </div>
 
+    <div class="form-group">
+      <md-input-container>
+        <input mdInput placeholder="Sobrenome" id="sobrenome" formControlName="sobrenome" value="" class="form-control">
+      </md-input-container>
+    </div>
     <!--
     <md-input-container>
       <input mdInput placeholder="Data de Nascimento" value={{date}}>
     </md-input-container>
     -->
+    <div class="form-group">
+      <md-input-container>
+        <input mdInput placeholder="E-mail" id="email" formControlName="email" value="" class="form-control">
+      </md-input-container>
+    </div>
 
-    <md-input-container>
-      <input mdInput placeholder="E-mail" value="">{{email}}
-    </md-input-container>
+    <div class="form-group">
+      <md-input-container>
+        <input mdInput placeholder="Senha" id="senha" formControlName="senha" value="" class="form-control">
+      </md-input-container>
+    </div>
 
-    <md-input-container>
-      <input mdInput placeholder="Senha" value="">={{senha}}
-    </md-input-container>
+    <div class="form-group">
+      <md-input-container>
+        <input mdInput placeholder="Confirmar Senha" id="confirmsenha" formControlName="confirmsenha" value="" class="form-control">
+      </md-input-container>
+    </div>
 
-    <md-input-container>
-      <input mdInput placeholder="Confirmar Senha" value="">{{confirmar}}
-    </md-input-container>
-
-    <button md-raised-button color="primary" type="submit">Sign Up</button>
-
+    <button md-raised-button color="primary" type="submit">Cadastrar</button>
+    </form>
     <div class="additional-info">
       Já está cadastrado?
-      <a href="extra-layout/sign-in">Sign in</a>
+      <a href="#/extra-layout/sign-in-social">Entrar</a>
     </div>
-  </form>
+  
 </ni-card>

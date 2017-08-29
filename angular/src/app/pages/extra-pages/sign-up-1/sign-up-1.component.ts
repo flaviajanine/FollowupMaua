@@ -1,9 +1,13 @@
 import { Component, OnInit, NgModule, Pipe, } from '@angular/core';
-import { ReactiveFormsModule, FormsModule, FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
-import {BrowserModule} from '@angular/platform-browser';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-
-import { DataService } from './../../../services/data.service';
+import { ReactiveFormsModule, 
+          FormsModule, 
+          FormGroup, 
+          FormControl, 
+          Validators } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { NomeValidators } from './../../../common/validators/nome.validators';
+import { CadastroService } from './../../../services/cadastro.service';
 
 
 // decorator 
@@ -17,33 +21,51 @@ import { DataService } from './../../../services/data.service';
 
 // aqui é onde vão as propertys e as dependencies injections 
 export class PageSignUp1Component implements OnInit {
-
-  constructor(private service: DataService) {
+  formdata: any[];
+  form: FormGroup;
+  nome: FormControl;
+  sobrenome: FormControl;
+  email: FormControl;
+  senha: FormControl;
+  confirmsenha: FormControl;
+  
+    ngOnInit() { 
+      this.createFormControls();
+      this.createForm();     
   }
-
-  ngOnInit() { 
-
-    this.myform = new FormGroup({
-      name: new FormGroup({
-        firstName: new FormControl('', Validators.required),
-        lastName: new FormControl('', Validators.required),
-      }),
-      email: new FormControl('', [
-        Validators.required,
-        Validators.pattern("[^ @]*@[^ @]*")
-      ]),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(8)
-      ]),
-      language: new FormControl()
-    });
-  }
+  
+  constructor(private service: CadastroService) {}
 
    onSubmit() {
 
+    console.log(this.form.value);
+    this.service.create(this.form)
+      .subscribe(
+        cadastrar => {
+          
+        }
+      )
+    
+    }
+
+    createForm(){
+      this.form = new FormGroup({
+        nome: this.nome,
+        sobrenome: this.sobrenome,
+        email: this.email,
+        senha: this.senha,
+        confirmsenha: this.confirmsenha
+      })
+    }
+
+    createFormControls(){
+        this.nome = new FormControl('', Validators.required);
+        this.sobrenome = new FormControl('', Validators.required);
+        this.email = new FormControl('', Validators.required);
+        this.senha = new FormControl('', Validators.required);
+        this.confirmsenha = new FormControl('', Validators.required);
+    }
 
     
-
-   }
 }
+

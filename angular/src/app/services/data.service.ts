@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { AppError } from './../common/app-error'
-import {NotFoundError} from './../common/not-found-error'
 import 'rxjs/add/operator/catch';
-// factories
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 
 @Injectable()
@@ -14,21 +13,42 @@ import 'rxjs/add/observable/throw';
 
 export class DataService {
 
-  private url = 'https://jsonplaceholder.typicode.com/posts';
-
-  constructor(private http: Http) {}
-
-  getPosts() {
-     return this.http.get(this.url);
-  }
+  constructor(private url: string, private http: Http) { }
   
-  postForm(post) {
-    return this.http.post(this.url, JSON.stringify(post))
-    .catch((error: Response) => {
+    getAll() {
+      return this.http.get(this.url)
+        .map(response => response.json())
+        .catch(this.handleError);
+    }
+  
+    create(resource) {
+      return this.http.post(this.url, JSON.stringify(resource))
+        .map(response => response.json())
+        .catch(this.handleError);
+    }
+  
+    update(resource) {
+      return this.http.patch(this.url + '/' + resource.id, JSON.stringify({ isRead: true }))
+        .map(response => response.json())      
+        .catch(this.handleError);
+    }
+  
+    delete(id) {
+      return this.http.delete(this.url + '/' + id)
+        .map(response => response.json())
+        .catch(this.handleError);
+    }
+  
+    // só pra ser visto nesse classe. o consumidor desse serviço
+    // não precisa saber dele, só dos CRUDs.
+    private handleError(error: Response) {
+      if (error.status === 400)
+        return Observable.throw(error.json());
+    
       if (error.status === 404)
-        return Observable.throw(new NotFoundError());
-      return Observable.throw(new AppError(error));
-    });
-  }
+        return Observable.throw(error.json());
+      
+      return Observable.throw(error.json());
+    }
 
 }
