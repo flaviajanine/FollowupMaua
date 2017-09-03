@@ -6,7 +6,8 @@ import { environment } from './environments/environment';
 import 'hammerjs';
 import 'chart.js';
 
-if (environment.production) {
+//if (environment.production) {
+  if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
 

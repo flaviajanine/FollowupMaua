@@ -1,3 +1,4 @@
+import { CadastroService } from './services/cadastro.service';
 import { AppErrorHandler }                  from './common/app-error-handler';
 import { ErrorHandler }                     from '@angular/core';
 import { BrowserModule }                    from '@angular/platform-browser';
@@ -53,6 +54,7 @@ import {DataService} from './services/data.service'
   ],
   providers: [ 
     DataService,
+    CadastroService,
     { provide: ErrorHandler, useClass: AppErrorHandler}
   ],
   bootstrap: [ AppComponent ]

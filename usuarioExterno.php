@@ -4,7 +4,6 @@
 
 require_once("config.php");
 
-
 $body = file_get_contents('php://input');
 $body = trim($body);
 $obj = json_decode($body,true);
@@ -15,12 +14,12 @@ $sobrenome = ($obj['sobrenome']);
 //$data_nascimento = date($obj['data_nascimento']); 'DATA_NASCIMENTO' => $data_nascimento,
 $email = $obj['email'];
 $senha = $obj['senha'];
-$confirmarSenha = $obj['confirmarSenha'];
+$confirmarSenha = $obj['confirmsenha'];
 
 if ($senha === $confirmarSenha) 
 {
 
-$busca = Usuario::validar($email);
+//$busca = Usuario::validar($email);
 
 if(isset($busca[0])){
 

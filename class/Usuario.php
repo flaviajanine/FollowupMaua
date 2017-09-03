@@ -61,7 +61,7 @@ class Usuario {
 
 	# --------EXEMPLO DE SELECT UTILIZANDO DAO ------ 
 	//Traz uma informação carregada pelo nome
-
+/*
 	public function loadByName($nome){
 
 		$sql = new Sql();
@@ -120,6 +120,8 @@ class Usuario {
 		}
 
 	}
+
+	*/
 
 	public function setData($data){
 

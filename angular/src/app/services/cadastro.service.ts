@@ -5,6 +5,6 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class CadastroService extends DataService {
   constructor(http: Http) {
-    super('http://jsonplaceholder.typicode.com/posts', http);
+    super('http://localhost/Mauacompanha/usuarioExterno.php', http);
    }
 }

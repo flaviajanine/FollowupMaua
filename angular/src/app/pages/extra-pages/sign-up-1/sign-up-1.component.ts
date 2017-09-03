@@ -21,7 +21,8 @@ import { CadastroService } from './../../../services/cadastro.service';
 
 // aqui é onde vão as propertys e as dependencies injections 
 export class PageSignUp1Component implements OnInit {
-  formdata: any[];
+
+  body: any[];
   form: FormGroup;
   nome: FormControl;
   sobrenome: FormControl;
@@ -34,19 +35,18 @@ export class PageSignUp1Component implements OnInit {
       this.createForm();     
   }
   
-  constructor(private service: CadastroService) {}
-
-   onSubmit() {
-
-    console.log(this.form.value);
-    this.service.create(this.form)
-      .subscribe(
-        cadastrar => {
-          
-        }
-      )
+ constructor(private service: CadastroService) {}
     
-    }
+ 
+    onSubmit() {
+     let body = this.form.value;
+     
+    this.service.create(body)
+    .subscribe( postbody => {
+      body = postbody;
+    });
+    }    
+    
 
     createForm(){
       this.form = new FormGroup({

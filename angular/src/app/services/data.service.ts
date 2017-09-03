@@ -13,6 +13,8 @@ import 'rxjs/add/observable/throw';
 
 export class DataService {
 
+  private headers = new Headers({'Content-Type': 'application/json'});
+
   constructor(private url: string, private http: Http) { }
   
     getAll() {
@@ -22,9 +24,9 @@ export class DataService {
     }
   
     create(resource) {
-      return this.http.post(this.url, JSON.stringify(resource))
-        .map(response => response.json())
-        .catch(this.handleError);
+      return this.http.post(this.url, resource)
+      .map(response => response.json())
+      .catch(this.handleError);
     }
   
     update(resource) {
