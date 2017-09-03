@@ -61,9 +61,9 @@ export class PageSignUp1Component implements OnInit {
     createFormControls(){
         this.nome = new FormControl('', Validators.required);
         this.sobrenome = new FormControl('', Validators.required);
-        this.email = new FormControl('', Validators.required);
-        this.senha = new FormControl('', Validators.required);
-        this.confirmsenha = new FormControl('', Validators.required);
+        this.email = new FormControl('', Validators.email);
+        this.senha = new FormControl('', Validators.minLength(6));
+        this.confirmsenha = new FormControl('', Validators.minLength(6));
     }
 
     
