@@ -39,13 +39,13 @@ header('Location: \angular\dist\index.html');
 exit;
 
 //Carrega um usuario
+
 /*
-
 $nome = new Usuario();
-$nome->loadByName("Gus");
+$nome->loadByName("Flavia");
 echo $nome;
-
 */
+
 
 //Carrega uma lista de usuarios
 /*
