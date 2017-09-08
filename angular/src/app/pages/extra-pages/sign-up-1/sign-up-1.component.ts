@@ -8,6 +8,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NomeValidators } from './../../../common/validators/nome.validators';
 import { CadastroService } from './../../../services/cadastro.service';
+import { Router } from '@angular/router';
 
 
 // decorator 
@@ -35,7 +36,8 @@ export class PageSignUp1Component implements OnInit {
       this.createForm();     
   }
   
- constructor(private service: CadastroService) {}
+ constructor(private service: CadastroService,
+             private router: Router) {}
     
  
     onSubmit() {
@@ -44,7 +46,14 @@ export class PageSignUp1Component implements OnInit {
     this.service.create(body)
     .subscribe( postbody => {
       body = postbody;
-    });
+      alert('Cadastrado com sucesso!');
+      this.router.navigate(['/extra-layout/sign-in-social']);
+    },
+    error => {
+      alert('Erro!');      
+  });
+
+
     }    
     
 

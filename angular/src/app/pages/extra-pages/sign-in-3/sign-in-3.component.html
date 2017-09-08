@@ -1,12 +1,21 @@
 <ni-card [title]="''" [align]="'center'">
-  <form (ngSubmit)="onSubmit()">
-    <md-input-container>
-      <input mdInput placeholder="Username" value="">
-    </md-input-container>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
+      <div class="form-group">
     <md-input-container>
-      <input mdInput placeholder="Password" value="">
+      <input mdInput placeholder="Usuário" id="user" formControlName="user" value="" class="form-control">
+      <div *ngIf="user.touched && user.invalid" class="alert alert-danger">
+      </div>  
     </md-input-container>
+      </div>
+
+      <div class="form-group">
+    <md-input-container>
+      <input mdInput placeholder="Senha" type="password" id="senha" formControlName="senha" value="" class="form-control">
+      <div *ngIf="senha.touched && senha.invalid" class="alert alert-danger">
+        </div>  
+    </md-input-container>
+      </div>
 
     <div class="text-left mb-module">
       <md-checkbox>
@@ -23,9 +32,9 @@
    </div>
 
     <div class="additional-info">
-      <a href="/extra-layout/sign-up">Cadastrar</a>
+      <a href="#/extra-layout/sign-up">Cadastrar</a>
       <span class="divider"></span>
-      <a href="/extra-layout/forgot">Esqueci minha senha</a>
+      <a href="#/extra-layout/forgot">Esqueci minha senha</a>
     </div>
   </form>
 </ni-card>

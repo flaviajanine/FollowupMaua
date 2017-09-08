@@ -35,6 +35,8 @@ function cors() {
     }
 
 echo "BEM-VINDO A PAGINA INICIAL";
+header('Location: \angular\dist\index.html');
+exit;
 
 //Carrega um usuario
 /*

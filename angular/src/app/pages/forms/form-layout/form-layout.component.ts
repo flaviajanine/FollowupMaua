@@ -4,11 +4,11 @@ import { DataService } from './../../../services/data.service';
 const BREADCRUMBS: any[] = [
   {
     title: 'Main',
-    link: '#'
+    link: '#/default-layout/dashboard'
   },
   {
     title: 'Notas',
-    link: '#'
+    link: '#/default-layout/form-layout'
   },
   {
     title: 'Inserir notas',

@@ -5,7 +5,7 @@ import { AmChartsService } from '@amcharts/amcharts3-angular';
 const BREADCRUMBS: any[] = [
   {
     title: 'Main',
-    link: '#'
+    link: '#/default-layout/dashboard'
   }
 ];
 const folders: any[] = [
