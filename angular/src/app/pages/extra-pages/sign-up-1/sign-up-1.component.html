@@ -5,6 +5,15 @@
 
     <div class="form-group">
       <md-input-container>
+        <input mdInput placeholder="RA" id="ra" formControlName="ra" value="" class="form-control">
+        <div *ngIf="ra.touched && ra.invalid" class="alert alert-danger">
+          <div *ngIf="ra.errors.required">Preenchimento do RA é necessário!</div>
+        </div>
+      </md-input-container>
+    </div>
+
+    <div class="form-group">
+      <md-input-container>
         <input mdInput placeholder="Nome" id="nome" formControlName="nome" value="" class="form-control">
         <div *ngIf="nome.touched && nome.invalid" class="alert alert-danger">
           <div *ngIf="nome.errors.required">Preenchimento do nome é necessário!</div>
@@ -12,19 +21,6 @@
       </md-input-container>
     </div>
 
-    <div class="form-group">
-      <md-input-container>
-        <input mdInput placeholder="Sobrenome" id="sobrenome" formControlName="sobrenome" value="" class="form-control">
-        <div *ngIf="sobrenome.touched && sobrenome.invalid" class="alert alert-danger">
-          <div *ngIf="sobrenome.errors.required">Preenchimento do sobrenome é necessário!</div>
-        </div>
-      </md-input-container>
-    </div>
-    <!--
-    <md-input-container>
-      <input mdInput placeholder="Data de Nascimento" value={{date}}>
-    </md-input-container>
-    -->
     <div class="form-group">
       <md-input-container>
         <input mdInput placeholder="E-mail" id="email" formControlName="email" value="" class="form-control">
@@ -37,14 +33,33 @@
     <div class="form-group">
       <md-input-container>
         <input mdInput placeholder="Senha" type="password" id="senha" formControlName="senha" value="" class="form-control">
+        <div *ngIf="senha.touched && senha.invalid" class="alert alert-danger">
+            <div *ngIf="senha.errors.email">Senha inválida!</div>  
+        </div>  
       </md-input-container>
     </div>
 
     <div class="form-group">
       <md-input-container>
-        <input mdInput placeholder="Confirmar Senha" type="password" id="confirmsenha" formControlName="confirmsenha" value="" class="form-control">
+        <input mdInput placeholder="Confirmar Senha" type="password" id="confirmarSenha" formControlName="confirmarSenha" value="" class="form-control">
+        <div *ngIf="confirmarSenha.touched && confirmarSenha.invalid" class="alert alert-danger">
+        </div> 
       </md-input-container>
     </div>
+
+    <div class="form-group">
+      <md-input-container>
+        <input mdInput placeholder="Curso" id="curso" formControlName="curso" value="" class="form-control">
+        <div *ngIf="curso.touched && curso.invalid" class="alert alert-danger">
+          <div *ngIf="curso.errors.required">Preenchimento do Curso é necessário!</div>
+        </div>
+      </md-input-container>
+    </div>
+    <!--
+    <md-input-container>
+      <input mdInput placeholder="Data de Nascimento" value={{date}}>
+    </md-input-container>
+    -->
 
     <button md-raised-button color="primary" type="submit">Cadastrar</button>
     </form>

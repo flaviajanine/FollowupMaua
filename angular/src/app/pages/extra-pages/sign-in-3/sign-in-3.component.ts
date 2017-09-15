@@ -8,7 +8,7 @@ import { ReactiveFormsModule,
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NomeValidators } from './../../../common/validators/nome.validators';
-import { CadastroService } from './../../../services/cadastro.service';
+//import { CadastroService } from './../../../services/cadastro.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -27,8 +27,8 @@ export class PageSignIn3Component implements OnInit {
       this.createFormControls();
       this.createForm();     
   }
-
-  constructor(private service: CadastroService,
+//private service: CadastroService,
+  constructor(
     private router: Router) { }
 
     
@@ -46,7 +46,7 @@ export class PageSignIn3Component implements OnInit {
 
   onSubmit() {
     let body = this.form.value;
-    
+    /*
    this.service.create(body)
    .subscribe( postbody => {
      body = postbody;
@@ -56,5 +56,6 @@ export class PageSignIn3Component implements OnInit {
      alert('Erro!');      
  });
 
+ */
    }
 }

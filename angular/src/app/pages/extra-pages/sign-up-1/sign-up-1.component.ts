@@ -7,9 +7,14 @@ import { ReactiveFormsModule,
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NomeValidators } from './../../../common/validators/nome.validators';
-import { CadastroService } from './../../../services/cadastro.service';
+//import { DataService } from './../../../services/data.service';
 import { Router } from '@angular/router';
-
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/throw';
 
 // decorator 
 @Component({
@@ -25,54 +30,67 @@ export class PageSignUp1Component implements OnInit {
 
   body: any[];
   form: FormGroup;
+  ra: FormControl;
   nome: FormControl;
-  sobrenome: FormControl;
+  curso: FormControl;
   email: FormControl;
   senha: FormControl;
-  confirmsenha: FormControl;
+  confirmarSenha: FormControl;
   
     ngOnInit() { 
       this.createFormControls();
       this.createForm();     
   }
   
- constructor(private service: CadastroService,
-             private router: Router) {}
-    
+ // constructor(private service: DataService,
+ // private router: Router) {} 
  
+ constructor(private http: Http, private router: Router){}
+ 
+ private url = 'http://localhost/mauAcompanha/cadastrar.php';
+ //private url = 'https://testemauacompanha123.mybluemix.net/cadastrar.php';
+
     onSubmit() {
      let body = this.form.value;
-     
-    this.service.create(body)
-    .subscribe( postbody => {
+
+     console.log(body);
+    
+     this.http.post(this.url, body)
+     .map(Response => Response)
+     .subscribe( postbody => {
       body = postbody;
       alert('Cadastrado com sucesso!');
+      console.log(postbody);
+      console.log(Response);
       this.router.navigate(['/extra-layout/sign-in-social']);
     },
     error => {
-      alert('Erro!');      
-  });
-
+      alert('Erro!'); 
+      console.log(error);
+    });
 
     }    
     
 
     createForm(){
       this.form = new FormGroup({
+        ra: this.ra,
         nome: this.nome,
-        sobrenome: this.sobrenome,
+        curso: this.curso,
         email: this.email,
         senha: this.senha,
-        confirmsenha: this.confirmsenha
+        confirmarSenha: this.confirmarSenha, 
+
       })
     }
 
     createFormControls(){
+        this.ra = new FormControl('', Validators.required);
         this.nome = new FormControl('', Validators.required);
-        this.sobrenome = new FormControl('', Validators.required);
+        this.curso = new FormControl('', Validators.required);
         this.email = new FormControl('', Validators.email);
         this.senha = new FormControl('', Validators.minLength(6));
-        this.confirmsenha = new FormControl('', Validators.minLength(6));
+        this.confirmarSenha = new FormControl('', Validators.minLength(6));
     }
 
     

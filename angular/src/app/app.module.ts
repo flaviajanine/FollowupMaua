@@ -1,5 +1,5 @@
-import { CadastroService } from './services/cadastro.service';
-import { AppErrorHandler }                  from './common/app-error-handler';
+
+//import { AppErrorHandler }                  from './common/app-error-handler';
 import { ErrorHandler }                     from '@angular/core';
 import { BrowserModule }                    from '@angular/platform-browser';
 import { RouterModule }                     from '@angular/router';
@@ -27,7 +27,8 @@ import { BoxedCLayoutComponent }            from './layouts/boxed-c/boxed-c.comp
 import { ExtraLayoutComponent }             from './layouts/extra/extra.component';
 
 // services
-import {DataService} from './services/data.service'
+//import { DataService } from './services/data.service';
+//import { CadastroService } from './services/cadastro.service';
 
 @NgModule({
   declarations : [
@@ -53,9 +54,8 @@ import {DataService} from './services/data.service'
     PagesModule
   ],
   providers: [ 
-    DataService,
-    CadastroService,
-    { provide: ErrorHandler, useClass: AppErrorHandler}
+   // DataService,
+    //ErrorHandler,
   ],
   bootstrap: [ AppComponent ]
 })
