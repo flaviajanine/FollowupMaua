@@ -10,6 +10,12 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NomeValidators } from './../../../common/validators/nome.validators';
 //import { CadastroService } from './../../../services/cadastro.service';
 import { Router } from '@angular/router';
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/throw';
 
 @Component({
   selector: 'page-sign-in-3',
@@ -20,7 +26,7 @@ export class PageSignIn3Component implements OnInit {
 
   body: any[];
   form: FormGroup;
-  user: FormControl;
+  email: FormControl;
   senha: FormControl;
   
     ngOnInit() { 
@@ -29,33 +35,39 @@ export class PageSignIn3Component implements OnInit {
   }
 //private service: CadastroService,
   constructor(
+    private http: Http,
     private router: Router) { }
-
+    private url = 'http://localhost/mauAcompanha/login.php';
     
     createForm(){
       this.form = new FormGroup({
-        user: this.user,
+        email: this.email,
         senha: this.senha
       })
     }
 
     createFormControls(){
-        this.user = new FormControl('', Validators.required);
+        this.email = new FormControl('', Validators.required);
         this.senha = new FormControl('', Validators.required);
     }
 
   onSubmit() {
     let body = this.form.value;
-    /*
-   this.service.create(body)
-   .subscribe( postbody => {
-     body = postbody;
-     this.router.navigate(['/default-layout/dashboard']);
-   },
-   error => {
-     alert('Erro!');      
- });
-
- */
+    
+         console.log(body);
+        
+         this.http.post(this.url, body)
+         .map(Response => Response)
+         .subscribe( postbody => {
+          body = postbody;
+          //alert('Login efetuado com sucesso com sucesso!');
+          console.log(postbody);
+          console.log(Response);
+          this.router.navigate(['default-layout/dashboard']);
+        },
+        error => {
+          alert('Erro!'); 
+          console.log(error);
+        });
    }
 }

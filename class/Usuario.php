@@ -136,7 +136,7 @@ class Usuario {
 
 		if(isset($result[0])){
 
-		header('Location: index.php');
+		echo("Login efetuado com sucesso com sucesso!");
 
 		}
 
@@ -144,6 +144,7 @@ class Usuario {
 			
 			$data = array('acesso'=>$login, 'senha'=>$password);
 			echo json_encode($data);
+			echo("Erro!");
 
 		}
 
