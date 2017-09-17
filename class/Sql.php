@@ -6,7 +6,7 @@ class Sql extends PDO {
 	private $conn;
 	public function __construct() //método construtor para conectar automaticamente no banco de dados
 	{ 
-		$this->conn = new PDO("mysql:dbname=mauacompanha_db;host=localhost","root","");
+		$this->conn = new PDO("mysql:dbname=ibmx_d921d6818ad95d7;host=us-cdbr-sl-dfw-01.cleardb.net","b8c11fda5798fe","6e7ae3bc");
 	} 
 
 	//Metodo que externa um array como parametro, varias chave/valores dentro do array.
