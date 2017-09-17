@@ -6,7 +6,7 @@ TCC dos alunos de computação.
 ```
 C:\xampp\htdocs\MauAcompanha\angular>ng build --prod
 ```
-* Copiar arquivos .php para dentro da pasta dist, mudando as credenciais do banco de dados local para as do cleardb.
+* Copiar arquivos .php e o manifest.yml para dentro da pasta dist, mudando as credenciais do banco de dados local para as do cleardb.
 * Fazer login com a conta no bluemix.
 ```
 cf login
