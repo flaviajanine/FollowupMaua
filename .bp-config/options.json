@@ -1,0 +1,6 @@
+{
+    "PHP_VERSION": "{PHP_70_LATEST}",
+    "WEBDIR": "public",
+    "PHP_MODULES": ["cli", "fpm"],
+    "PHP_EXTENSIONS": ["pdo", "bz2", "zlib", "curl", "mcrypt", "mbstring"]
+}

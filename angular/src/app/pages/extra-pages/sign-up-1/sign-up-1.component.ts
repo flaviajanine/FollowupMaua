@@ -45,9 +45,11 @@ export class PageSignUp1Component implements OnInit {
  // constructor(private service: DataService,
  // private router: Router) {} 
  
- constructor(private http: Http, private router: Router){}
+ constructor(
+   private http: Http, 
+   private router: Router){}
  
- private url = 'http://localhost/mauAcompanha/cadastrar.php';
+ private url = './../../cadastrar.php';
  //private url = 'https://testemauacompanha123.mybluemix.net/cadastrar.php';
 
     onSubmit() {

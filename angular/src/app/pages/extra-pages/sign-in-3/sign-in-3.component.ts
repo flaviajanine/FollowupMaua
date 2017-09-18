@@ -37,7 +37,7 @@ export class PageSignIn3Component implements OnInit {
   constructor(
     private http: Http,
     private router: Router) { }
-    private url = 'http://localhost/mauAcompanha/login.php';
+    private url = './../../login.php';
     
     createForm(){
       this.form = new FormGroup({
