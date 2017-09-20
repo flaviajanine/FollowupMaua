@@ -1,7 +1,7 @@
 # MauAcompanha
 TCC dos alunos de computação.
 
-## Deploy localhost
+## Deploy no localhost
 * dentro do dir MauAcompanha\angular
 ```
 C:\xampp\htdocs\MauAcompanha\angular>npm install -g @angular/cli
