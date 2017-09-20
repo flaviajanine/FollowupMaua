@@ -6,15 +6,8 @@ import { ReactiveFormsModule,
           Validators } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { NomeValidators } from './../../../common/validators/nome.validators';
-//import { DataService } from './../../../services/data.service';
 import { Router } from '@angular/router';
-import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/throw';
+import { CadastroService } from './../../../services/cadastro.service';
 
 // decorator 
 @Component({
@@ -42,29 +35,25 @@ export class PageSignUp1Component implements OnInit {
       this.createForm();     
   }
   
- // constructor(private service: DataService,
- // private router: Router) {} 
- 
  constructor(
-   private http: Http, 
+   private service: CadastroService, 
    private router: Router){}
  
- private url = './../../cadastrar.php';
- //private url = 'https://testemauacompanha123.mybluemix.net/cadastrar.php';
 
+ 
     onSubmit() {
      let body = this.form.value;
 
      console.log(body);
-    
-     this.http.post(this.url, body)
-     .map(Response => Response)
+  
+     this.service.cadastrar(body)
      .subscribe( postbody => {
       body = postbody;
-      alert('Cadastrado com sucesso!');
+      
       console.log(postbody);
       console.log(Response);
-      this.router.navigate(['/extra-layout/sign-in-social']);
+      alert('Cadastrado com sucesso!')
+      this.router.navigate(['/extra-layout/sign-in-social']);    
     },
     error => {
       alert('Erro!'); 

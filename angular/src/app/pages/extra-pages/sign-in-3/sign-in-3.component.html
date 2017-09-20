@@ -17,6 +17,10 @@
     </md-input-container>
       </div>
 
+      <div *ngIf="loginInvalido" class="alert alert-danger">
+        Login inválido!!
+      </div>
+      
     <div class="text-left mb-module">
       <md-checkbox>
         Lembrar Senha

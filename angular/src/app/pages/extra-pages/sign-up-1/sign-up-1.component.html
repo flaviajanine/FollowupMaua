@@ -25,7 +25,7 @@
       <md-input-container>
         <input mdInput placeholder="E-mail" id="email" formControlName="email" value="" class="form-control">
         <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
-          <div *ngIf="email.errors.email">E-mail inválido!</div>   
+          <div *ngIf="email.errors.required">E-mail inválido!</div>   
         </div>  
          </md-input-container>
     </div>
@@ -34,7 +34,8 @@
       <md-input-container>
         <input mdInput placeholder="Senha" type="password" id="senha" formControlName="senha" value="" class="form-control">
         <div *ngIf="senha.touched && senha.invalid" class="alert alert-danger">
-            <div *ngIf="senha.errors.email">Senha inválida!</div>  
+            <div *ngIf="senha.errors.required">Senha inválida!</div>  
+            
         </div>  
       </md-input-container>
     </div>
@@ -43,6 +44,7 @@
       <md-input-container>
         <input mdInput placeholder="Confirmar Senha" type="password" id="confirmarSenha" formControlName="confirmarSenha" value="" class="form-control">
         <div *ngIf="confirmarSenha.touched && confirmarSenha.invalid" class="alert alert-danger">
+          <div *ngIf="confirmarSenha.errors?.equalTo && confirmarSenha.errors.required">Senhas não correspondem!</div>  
         </div> 
       </md-input-container>
     </div>

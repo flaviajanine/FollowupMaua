@@ -1,4 +1,3 @@
-//import { Router, RouterLink } from '@angular/router';
 import { Component, OnInit, NgModule, Pipe, } from '@angular/core';
 import { ReactiveFormsModule, 
           FormsModule, 
@@ -7,15 +6,8 @@ import { ReactiveFormsModule,
           Validators } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { NomeValidators } from './../../../common/validators/nome.validators';
-//import { CadastroService } from './../../../services/cadastro.service';
 import { Router } from '@angular/router';
-import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/throw';
+import { AutenticService } from './../../../services/autentic.service';
 
 @Component({
   selector: 'page-sign-in-3',
@@ -28,16 +20,17 @@ export class PageSignIn3Component implements OnInit {
   form: FormGroup;
   email: FormControl;
   senha: FormControl;
+  loginInvalido: boolean; 
   
     ngOnInit() { 
       this.createFormControls();
       this.createForm();     
   }
-//private service: CadastroService,
+
   constructor(
-    private http: Http,
+    private service: AutenticService,
     private router: Router) { }
-    private url = './../../login.php';
+   
     
     createForm(){
       this.form = new FormGroup({
@@ -56,14 +49,17 @@ export class PageSignIn3Component implements OnInit {
     
          console.log(body);
         
-         this.http.post(this.url, body)
-         .map(Response => Response)
+         this.service.login(body)        
          .subscribe( postbody => {
           body = postbody;
-          //alert('Login efetuado com sucesso com sucesso!');
+          if(postbody){
+            this.router.navigate(['default-layout/dashboard']);
+          }else{
+            this.loginInvalido = true;
+          }
           console.log(postbody);
           console.log(Response);
-          this.router.navigate(['default-layout/dashboard']);
+         
         },
         error => {
           alert('Erro!'); 

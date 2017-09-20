@@ -28,42 +28,5 @@ export class PageFormLayoutComponent implements OnInit {
 
    ngOnInit() {
    }
-/*
-  posts: any[];
-  
-  constructor(private service: DataService) {
-  }
 
-  ngOnInit() {
-    this.service.getPosts()
-      .subscribe(
-        response => {
-        this.posts = response.json();
-      },
-        error => {
-        alert('An unexpected error occurred.');
-        console.log(error);
-      });
-  }
-    create(titleinput: HTMLInputElement){
-    let post = { title: titleinput.value};
-    titleinput.value = '';
-
-  
-   this.service.createPost(post).subscribe(response => {
-      post['id'] = response.json().id;
-      this.posts.splice(0,0,post);
-      console.log(response.json());
-    },
-     (error: Response) => {
-       if (error.status === 400) {}
-       // this.form.setErros(error.json());
-       else{
-      alert('An unexpected error occurred.');
-      console.log(error);
-       }
-     });
-     
-    }
-    */
 }

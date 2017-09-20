@@ -1,15 +1,11 @@
-
-//import { AppErrorHandler }                  from './common/app-error-handler';
 import { ErrorHandler }                     from '@angular/core';
 import { BrowserModule }                    from '@angular/platform-browser';
 import { RouterModule }                     from '@angular/router';
 import { NgModule }                         from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// Modulo para os serviços xmlHttp
-import {HttpModule}                         from '@angular/http';
+import { HttpModule }                         from '@angular/http';
 import { BrowserAnimationsModule }          from '@angular/platform-browser/animations';
 // até aqui, são módulos do angular de qqr projeto
-
 // depois são coisas que são criadas de acordo com a criação
 
 // rotas e módulos
@@ -27,8 +23,11 @@ import { BoxedCLayoutComponent }            from './layouts/boxed-c/boxed-c.comp
 import { ExtraLayoutComponent }             from './layouts/extra/extra.component';
 
 // services
-//import { DataService } from './services/data.service';
-//import { CadastroService } from './services/cadastro.service';
+import { CadastroService } from './services/cadastro.service';
+import { AutenticService } from './services/autentic.service';
+
+
+// tratamento de erro
 
 @NgModule({
   declarations : [
@@ -54,8 +53,8 @@ import { ExtraLayoutComponent }             from './layouts/extra/extra.componen
     PagesModule
   ],
   providers: [ 
-   // DataService,
-    //ErrorHandler,
+     CadastroService,
+     AutenticService
   ],
   bootstrap: [ AppComponent ]
 })

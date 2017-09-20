@@ -22,18 +22,14 @@ if ($senha === $confirmarSenha)
 $busca = Usuario::validar_email($email);
 
 if(isset($busca[0])){
-
-	echo "<br/>". "Email ja cadastrado, por favor informe outro!";
-
+ 
+	echo("email já cadastro");
+	
 }else{
 	
 	$cadastraUsuario = new Usuario($ra,$nome,$email,$senha,$curso);
 	$cadastraUsuario->insert();
 	echo $cadastraUsuario;
 }
-
-} else{
-
-	echo ("Senha invalida");
 
 }

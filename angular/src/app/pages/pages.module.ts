@@ -94,8 +94,8 @@ import { PagePaginationTableComponent }    from './tables/pagination-table/pagin
 import { PageFormElementsComponent }       from './forms/form-elements/form-elements.component';
 import { PageFormLayoutComponent }         from './forms/form-layout/form-layout.component';
 import { PageFormValidationComponent }     from './forms/form-validation/form-validation.component';
-import { PageGoogleMapComponent }          from './maps/google-map/google-map.component';
-import { PageLeafletMapComponent }         from './maps/leaflet-map/leaflet-map.component';
+//import { PageGoogleMapComponent }          from './maps/google-map/google-map.component';
+//import { PageLeafletMapComponent }         from './maps/leaflet-map/leaflet-map.component';
 import { PageWidgetsComponent }            from './widgets/widgets.component';
 import { PageLayoutsComponent }            from './layouts/layouts.component';
 import { PageSignIn1Component }            from './extra-pages/sign-in-1/sign-in-1.component';
@@ -214,8 +214,8 @@ import { PageNiButtonsComponent }          from './ni-components/buttons/buttons
     PageFormElementsComponent,
     PageFormLayoutComponent,
     PageFormValidationComponent,
-    PageGoogleMapComponent,
-    PageLeafletMapComponent,
+   // PageGoogleMapComponent,
+   // PageLeafletMapComponent,
     PageWidgetsComponent,
     PageLayoutsComponent,
     PageNg2ChartsComponent,
@@ -279,8 +279,8 @@ import { PageNiButtonsComponent }          from './ni-components/buttons/buttons
     PageFormElementsComponent,
     PageFormLayoutComponent,
     PageFormValidationComponent,
-    PageGoogleMapComponent,
-    PageLeafletMapComponent,
+  // PageGoogleMapComponent,
+  //  PageLeafletMapComponent,
     PageWidgetsComponent,
     PageLayoutsComponent,
     PageNg2ChartsComponent,

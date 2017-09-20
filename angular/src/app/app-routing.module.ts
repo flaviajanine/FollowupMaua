@@ -67,8 +67,8 @@ import { PagePaginationTableComponent } from './pages/tables/pagination-table/pa
 import { PageFormElementsComponent }    from './pages/forms/form-elements/form-elements.component';
 import { PageFormLayoutComponent }      from './pages/forms/form-layout/form-layout.component';
 import { PageFormValidationComponent }  from './pages/forms/form-validation/form-validation.component';
-import { PageGoogleMapComponent }       from './pages/maps/google-map/google-map.component';
-import { PageLeafletMapComponent }      from './pages/maps/leaflet-map/leaflet-map.component';
+//import { PageGoogleMapComponent }       from './pages/maps/google-map/google-map.component';
+//import { PageLeafletMapComponent }      from './pages/maps/leaflet-map/leaflet-map.component';
 import { PageWidgetsComponent }         from './pages/widgets/widgets.component';
 import { PageLayoutsComponent }         from './pages/layouts/layouts.component';
 
@@ -123,8 +123,8 @@ const defaultRoutes: Routes = [
   { path: 'form-elements', component: PageFormElementsComponent },
   { path: 'form-layout', component: PageFormLayoutComponent },
   { path: 'form-validation', component: PageFormValidationComponent },
-  { path: 'google-map', component: PageGoogleMapComponent },
-  { path: 'leaflet-map', component: PageLeafletMapComponent },
+ // { path: 'google-map', component: PageGoogleMapComponent },
+ // { path: 'leaflet-map', component: PageLeafletMapComponent },
   { path: 'layouts', component: PageLayoutsComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
