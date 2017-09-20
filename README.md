@@ -1,6 +1,24 @@
 # MauAcompanha
 TCC dos alunos de computação.
 
+## Deploy no localhost
+* dentro do dir MauAcompanha\angular
+```
+C:\xampp\htdocs\MauAcompanha\angular>npm install -g @angular/cli
+```
+* Instalar os node modules
+```
+npm install
+```
+* Instalar módulo http
+```
+npm install @angular/http
+```
+* Instalar módulo http
+```
+npm install @angular/router
+```
+
 ## Deploy no bluemix
 * Compilar o typescript.
 ```
