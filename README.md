@@ -8,15 +8,15 @@ C:\xampp\htdocs\MauAcompanha\angular>npm install -g @angular/cli
 ```
 * Instalar os node modules
 ```
-C:\xampp\htdocs\MauAcompanha\angular>npm install
+npm install
 ```
 * Instalar módulo http
 ```
-C:\xampp\htdocs\MauAcompanha\angular>npm install @angular/http
+npm install @angular/http
 ```
 * Instalar módulo http
 ```
-C:\xampp\htdocs\MauAcompanha\angular>npm install @angular/router
+npm install @angular/router
 ```
 
 ## Deploy no bluemix
