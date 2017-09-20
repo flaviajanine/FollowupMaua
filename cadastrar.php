@@ -23,7 +23,7 @@ $busca = Usuario::validar_email($email);
 
 if(isset($busca[0])){
  
-	echo("email já cadastro");
+	echo("Email já cadastro");
 	
 }else{
 	
