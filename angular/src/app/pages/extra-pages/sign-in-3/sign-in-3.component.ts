@@ -1,3 +1,5 @@
+import { Http, Response } from '@angular/http';
+import { LoginService } from './../../../services/login.service';
 import { Component, OnInit, NgModule, Pipe, } from '@angular/core';
 import { ReactiveFormsModule, 
           FormsModule, 
@@ -7,7 +9,6 @@ import { ReactiveFormsModule,
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { Router } from '@angular/router';
-import { AutenticService } from './../../../services/autentic.service';
 
 @Component({
   selector: 'page-sign-in-3',
@@ -20,15 +21,15 @@ export class PageSignIn3Component implements OnInit {
   form: FormGroup;
   email: FormControl;
   senha: FormControl;
-  loginInvalido: boolean; 
-  
+  private url = './../../login.php';   
+
     ngOnInit() { 
       this.createFormControls();
       this.createForm();     
   }
 
   constructor(
-    private service: AutenticService,
+    private http: Http,
     private router: Router) { }
    
     
@@ -48,14 +49,14 @@ export class PageSignIn3Component implements OnInit {
     let body = this.form.value;
     
          console.log(body);
-        
-         this.service.login(body)        
+          
+         this.http.post(this.url, body)
+            .map(Response => Response) 
          .subscribe( postbody => {
           body = postbody;
           if(postbody){
             this.router.navigate(['default-layout/dashboard']);
           }else{
-            this.loginInvalido = true;
           }
           console.log(postbody);
           console.log(Response);

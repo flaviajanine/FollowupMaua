@@ -105,7 +105,7 @@ class Usuario {
 	public static function search($login){
 
 		$sql = new Sql();
-		return $sql->select("SELECT * FROM tb_aluno WHERE email_aluno LIKE :SEARCH ORDER BY email_aluno",array(':SEARCH'=>"%".$login."%"));
+		return $sql->select("SELECT * FROM tb_aluno WHERE email_aluno LIKE :SEARCH ORDER BY email_aluno",array(':SEARCH'=>$login));
 	}
 
 	//Validar Email no banco de dados

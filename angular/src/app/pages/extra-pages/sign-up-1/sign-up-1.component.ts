@@ -7,7 +7,12 @@ import { ReactiveFormsModule,
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { Router } from '@angular/router';
-import { CadastroService } from './../../../services/cadastro.service';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/throw';
 
 // decorator 
 @Component({
@@ -29,6 +34,7 @@ export class PageSignUp1Component implements OnInit {
   email: FormControl;
   senha: FormControl;
   confirmarSenha: FormControl;
+  private url = './../../cadastrar1.php';
   
     ngOnInit() { 
       this.createFormControls();
@@ -36,29 +42,45 @@ export class PageSignUp1Component implements OnInit {
   }
   
  constructor(
-   private service: CadastroService, 
-   private router: Router){}
+   private router: Router,
+   private http: Http
+  ){}
  
 
- 
-    onSubmit() {
+     onSubmit() {
      let body = this.form.value;
 
      console.log(body);
   
-     this.service.cadastrar(body)
-     .subscribe( postbody => {
-      body = postbody;
-      
-      console.log(postbody);
-      console.log(Response);
+     this.http.post(this.url, body)
+     .map( (res: Response) =>
+     {
+      let response = res.json();
+
+      if (response.Senha != "1"){
+
+        if (response.Email === "1"){
+        alert('Email já cadastrado');
+        this.form.reset;
+      }
+      else
+      {
       alert('Cadastrado com sucesso!')
-      this.router.navigate(['/extra-layout/sign-in-social']);    
+      this.router.navigate(['/extra-layout/sign-in-social'])
+      }
+    }else{
+      alert('Senhas incompatíveis');
+      this.form.reset;
+    }
+
+     })
+     .subscribe( postbody => {
+      body = postbody;    
     },
     error => {
       alert('Erro!'); 
       console.log(error);
-    });
+    })
 
     }    
     

@@ -10,14 +10,15 @@ import 'rxjs/add/observable/throw';
 export class CadastroService {
 
   constructor(
-    private http: Http
+    private http: Http,
   ) { }
 
-  private url = './../../cadastrar.php';
+  private url = './../../usuarioMaua.php';
 
   cadastrar(body){
     return this.http.post(this.url, body)
     .map(Response => Response);
   }
-
 }
+ 
+

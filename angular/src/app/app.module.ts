@@ -3,7 +3,7 @@ import { BrowserModule }                    from '@angular/platform-browser';
 import { RouterModule }                     from '@angular/router';
 import { NgModule }                         from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule }                         from '@angular/http';
+import { HttpModule }                       from '@angular/http';
 import { BrowserAnimationsModule }          from '@angular/platform-browser/animations';
 // até aqui, são módulos do angular de qqr projeto
 // depois são coisas que são criadas de acordo com a criação
@@ -24,7 +24,7 @@ import { ExtraLayoutComponent }             from './layouts/extra/extra.componen
 
 // services
 import { CadastroService } from './services/cadastro.service';
-import { AutenticService } from './services/autentic.service';
+import { LoginService } from './services/login.service';
 
 
 // tratamento de erro
@@ -53,8 +53,7 @@ import { AutenticService } from './services/autentic.service';
     PagesModule
   ],
   providers: [ 
-     CadastroService,
-     AutenticService
+     LoginService
   ],
   bootstrap: [ AppComponent ]
 })

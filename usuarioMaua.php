@@ -1,7 +1,5 @@
 <?php 
 
-<?php 
-
 //FAZ O CADASTRO DO USUARIO QUE NÃO ESTA ENTRANDO PELO MAUA NET!
 
 require_once("config.php");
@@ -25,17 +23,23 @@ $busca = Usuario::validar_email($email);
 
 if(isset($busca[0])){
 
-	echo "<br/>". "Email ja cadastrado, por favor informe outro!";
+ $out =  array('Email'=>'1');
+  echo json_encode($out);
+  
 
 }else{
-	
-	$cadastraUsuario = new Usuario($ra,$nome,$email,$senha,$curso);
-	$cadastraUsuario->insert();
-	echo $cadastraUsuario;
+ 
+ $cadastraUsuario = new Usuario($ra,$nome,$email,$senha,$curso);
+ $cadastraUsuario->insert();
+
+ $out = array('ra'=>$ra,'nome'=>$nome,'email'=>$email,'senha'=>$senha,'curso'=>$curso,);
+ echo json_encode($out);
+ 
 }
 
 } else{
 
-	echo ("Senha invalida");
+	$out =  array('Senha'=>'1');
+	echo json_encode($out);
 
 }
