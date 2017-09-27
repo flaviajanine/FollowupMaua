@@ -30,11 +30,11 @@ export class PageSignUp1Component implements OnInit {
   form: FormGroup;
   ra: FormControl;
   nome: FormControl;
-  curso: FormControl;
+  idcursos: FormControl;
   email: FormControl;
   senha: FormControl;
   confirmarSenha: FormControl;
-  private url = './../../cadastrar1.php';
+  private url = './../../api/cadastrarAluno.php';
   
     ngOnInit() { 
       this.createFormControls();
@@ -89,7 +89,7 @@ export class PageSignUp1Component implements OnInit {
       this.form = new FormGroup({
         ra: this.ra,
         nome: this.nome,
-        curso: this.curso,
+        idcursos: this.idcursos,
         email: this.email,
         senha: this.senha,
         confirmarSenha: this.confirmarSenha, 
@@ -100,7 +100,7 @@ export class PageSignUp1Component implements OnInit {
     createFormControls(){
         this.ra = new FormControl('', Validators.required);
         this.nome = new FormControl('', Validators.required);
-        this.curso = new FormControl('', Validators.required);
+        this.idcursos = new FormControl('', Validators.required);
         this.email = new FormControl('', Validators.email);
         this.senha = new FormControl('', Validators.minLength(6));
         this.confirmarSenha = new FormControl('', Validators.minLength(6));

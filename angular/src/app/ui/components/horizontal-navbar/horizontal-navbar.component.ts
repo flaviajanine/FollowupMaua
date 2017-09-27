@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { Http, Response } from '@angular/http';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -15,13 +17,37 @@ export class HorizontalNavbarComponent implements OnInit {
   @Input() openedSidebar: boolean;
   @Output() sidebarState = new EventEmitter();
   showOverlay: boolean;
+  nome: string;
+  private url: './../../api/sair.php';
 
-  constructor() {
+  constructor(
+    private http: Http,
+    private router: Router
+  ) {
     this.openedSidebar = false;
     this.showOverlay = false;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+        
+    this.nome = "Flávia Janine";
+
+  }
+
+  sair(){
+    this.http.get(this.url)
+    .map((res: Response) =>
+     { 
+       let response = res.json();
+
+       if(response.Msg === "saiu"){
+          this.router.navigate(['/extra-layout/sign-in-social']);
+       }
+
+      }
+  )
+    .subscribe();
+  }
 
   open(event) {
     let clickedComponent = event.target.closest('.nav-item');

@@ -21,7 +21,7 @@ export class PageSignIn3Component implements OnInit {
   form: FormGroup;
   email: FormControl;
   senha: FormControl;
-  private url = './../../login.php';   
+  private url = './../../api/validar_acesso.php';   
 
     ngOnInit() { 
       this.createFormControls();
@@ -51,16 +51,35 @@ export class PageSignIn3Component implements OnInit {
          console.log(body);
           
          this.http.post(this.url, body)
-            .map(Response => Response) 
+            .map((res: Response) => 
+              {
+                 let response = res.json();
+                 
+                 if (response.Error === "0"){
+
+                 if (response.Categoria != "Invalida"){
+                 
+                switch(response.Categoria) {
+                  case "0": {
+                    this.router.navigate(['/default-layout/dashboard']);
+                    break;
+                  }
+                  case "1":{
+                    this.router.navigate(['/default-layout/dashboard-2']);
+                    break;
+                  }
+                  case "2":{
+                    this.router.navigate(['/default-layout/dashboard-3']);
+                    break;
+                  }                 
+                }
+              }
+            }else{
+              alert('Login inválido.');
+            }
+              }) 
          .subscribe( postbody => {
-          body = postbody;
-          if(postbody){
-            this.router.navigate(['default-layout/dashboard']);
-          }else{
-          }
-          console.log(postbody);
-          console.log(Response);
-        
+          body = postbody;       
         },
         error => {
           alert('Erro!'); 

@@ -11,6 +11,7 @@
   <h1 class="page-title">{{ title }}</h1>
 
   <div class="nav-items">
+    <!--
     <div class="nav-item" [ngClass]="{ 'opened' : false }">
       <a href="#" (click)="open($event)" class="nav-link">
         <span class="icon sli-bell"></span>
@@ -111,7 +112,7 @@
             </a>
           </li>
         </ul>
-
+ 
         <div class="menu-footer">
           <a href="#">View all events</a>
         </div>
@@ -124,6 +125,7 @@
       </a>
 
       <div class="dropdown-menu">
+        
         <h4 class="menu-title">You have 3 new messages</h4>
 
         <ul>
@@ -165,13 +167,15 @@
             </a>
           </li>
         </ul>
+   
       </div>
     </div>
+  -->
 
     <div class="nav-item" [ngClass]="{ 'opened' : false }">
       <a href="#" (click)="open($event)" class="nav-link">
-        <div class="avatar"><img src="assets/content/avatar-2.jpg" width="40" height="40" alt=""></div>
-        <div class="name">Justin Adams</div>
+       <!-- <div class="avatar"><img src="assets/content/avatar-2.jpg" width="40" height="40" alt=""></div> -->
+        <div class="name">{{ nome }}</div>
       </a>
 
       <div class="dropdown-menu mini-menu">
@@ -189,7 +193,7 @@
             <a href="#"><span class="icon sli-settings"></span> Settings</a>
           </li>
           <li>
-            <a href="#"><span class="icon sli-logout"></span> Log Out</a>
+            <a href="#" (click)="sair()"><span class="icon sli-logout"></span> Log Out</a>
           </li>
         </ul>
       </div>
