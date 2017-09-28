@@ -23,9 +23,13 @@ import { BoxedCLayoutComponent }            from './layouts/boxed-c/boxed-c.comp
 import { ExtraLayoutComponent }             from './layouts/extra/extra.component';
 
 // services
-import { CadastroService } from './services/cadastro.service';
+import { ApiService } from './services/api.service';
 import { LoginService } from './services/login.service';
-
+import { LogoutService } from './services/logout.service';
+import { AuthGuard } from './services/auth-guard/auth-guard.service';
+import { AuthAluno } from './services/auth-guard/auth-aluno.service';
+import { AuthProf } from './services/auth-guard/auth-prof.service';
+import { AuthAdmin } from './services/auth-guard/auth-admin.service';
 
 // tratamento de erro
 
@@ -53,7 +57,13 @@ import { LoginService } from './services/login.service';
     PagesModule
   ],
   providers: [ 
-     LoginService
+     LoginService,
+     LogoutService,
+     ApiService,
+     AuthGuard,
+     AuthAdmin,
+     AuthAluno,
+     AuthProf
   ],
   bootstrap: [ AppComponent ]
 })

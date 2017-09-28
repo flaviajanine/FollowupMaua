@@ -1,5 +1,7 @@
+import { LogoutService } from './../../../services/logout.service';
+import { Response } from '@angular/http';
+import { ApiService } from './../../../services/api.service';
 import { Router } from '@angular/router';
-import { Http, Response } from '@angular/http';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -18,35 +20,32 @@ export class HorizontalNavbarComponent implements OnInit {
   @Output() sidebarState = new EventEmitter();
   showOverlay: boolean;
   nome: string;
-  private url: './../../api/sair.php';
 
   constructor(
-    private http: Http,
-    private router: Router
+    private router: Router,
+    private apiservice: ApiService,
+    private logoutservice: LogoutService
   ) {
     this.openedSidebar = false;
     this.showOverlay = false;
+    this.apiservice.getData()
+    .subscribe( (res: Response) =>
+    {
+      let data = res.json();      
+      this.nome = data.NOME;  
+    }
+   ); 
+
   }
 
   ngOnInit() {
-        
-    this.nome = "Flávia Janine";
 
+
+      
   }
 
   sair(){
-    this.http.get(this.url)
-    .map((res: Response) =>
-     { 
-       let response = res.json();
-
-       if(response.Msg === "saiu"){
-          this.router.navigate(['/extra-layout/sign-in-social']);
-       }
-
-      }
-  )
-    .subscribe();
+    this.logoutservice.logout();
   }
 
   open(event) {

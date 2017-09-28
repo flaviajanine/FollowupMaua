@@ -8,7 +8,7 @@
     <span></span>
   </div>
 
-  <h1 class="page-title">{{ title }}</h1>
+  <h1 class="page-title">{{title}}</h1>
 
   <div class="nav-items">
     <!--
@@ -175,23 +175,18 @@
     <div class="nav-item" [ngClass]="{ 'opened' : false }">
       <a href="#" (click)="open($event)" class="nav-link">
        <!-- <div class="avatar"><img src="assets/content/avatar-2.jpg" width="40" height="40" alt=""></div> -->
-        <div class="name">{{ nome }}</div>
+        <div class="name">{{nome}}</div>
       </a>
 
       <div class="dropdown-menu mini-menu">
         <ul>
           <li>
-            <a href="#"><span class="icon sli-home"></span> My Account</a>
-          </li>
-          <li>
-            <a href="#"><span class="icon sli-user"></span> Profile</a>
+            <a href="#" routerLink="/default-layout/bootstrap-tables"><span class="icon sli-user"></span> Profile</a>
           </li>
           <li>
             <a href="#" routerLink="/default-layout/calendar"><span class="icon sli-calendar"></span> Calendar</a>
           </li>
-          <li>
-            <a href="#"><span class="icon sli-settings"></span> Settings</a>
-          </li>
+          
           <li>
             <a href="#" (click)="sair()"><span class="icon sli-logout"></span> Log Out</a>
           </li>

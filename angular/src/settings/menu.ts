@@ -32,10 +32,6 @@ export const MENU: any = [
       {
         title: 'Inserir Notas',
         routing: '/default-layout/form-layout'
-      },
-      {
-        title: 'Bootstrap tables',
-        routing: '/default-layout/bootstrap-tables'
       }
     ]
   },

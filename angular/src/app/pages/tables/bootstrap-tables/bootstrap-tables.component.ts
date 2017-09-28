@@ -1,18 +1,13 @@
+import { Response } from '@angular/http';
+import { ApiService } from './../../../services/api.service';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../../layouts/shared-service';
 
 const BREADCRUMBS: any[] = [
   {
-    title: 'UI Elements',
+    title: 'Meu Perfil',
     link: '#'
-  },
-  {
-    title: 'Tables',
-    link: '#'
-  },
-  {
-    title: 'Bootstrap table',
-    link: ''
   }
 ];
 
@@ -25,8 +20,18 @@ export class PageBootstrapTablesComponent implements OnInit {
   pageTitle: string = 'Bootstrap table';
   breadcrumb: any[] = BREADCRUMBS;
 
-  constructor( private _sharedService: SharedService ) {
+  constructor( private _sharedService: SharedService,
+    private router: Router,
+    private apiservice: ApiService
+  ) {
     this._sharedService.emitChange(this.pageTitle);
+    /*this.apiservice.getData()
+    .subscribe((res: Response) =>
+    {
+      let values = res.json();
+    }
+  )
+  */
   }
 
   ngOnInit() {}

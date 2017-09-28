@@ -1,3 +1,7 @@
+import { AuthAdmin } from './services/auth-guard/auth-admin.service';
+import { AuthProf } from './services/auth-guard/auth-prof.service';
+import { AuthAluno } from './services/auth-guard/auth-aluno.service';
+import { AuthGuard } from './services/auth-guard/auth-guard.service';
 import { NgModule }                     from '@angular/core';
 import { Routes, RouterModule }         from '@angular/router';
 
@@ -73,9 +77,20 @@ import { PageWidgetsComponent }         from './pages/widgets/widgets.component'
 import { PageLayoutsComponent }         from './pages/layouts/layouts.component';
 
 const defaultRoutes: Routes = [
-  { path: 'dashboard', component: PageDashboardComponent },
-  { path: 'dashboard-2', component: PageDashboard2Component },
-  { path: 'dashboard-3', component: PageDashboard3Component },
+  { 
+    path: 'dashboard', 
+    component: PageDashboardComponent,
+    canActivate: [AuthGuard, AuthAluno]
+  },
+  { 
+    path: 'dashboard-2', 
+    component: PageDashboard2Component,
+    canActivate: [AuthGuard, AuthProf]
+  },
+  { path: 'dashboard-3', 
+    component: PageDashboard3Component,
+    canActivate: [AuthGuard, AuthAdmin]
+  },
   { path: 'typography', component: PageTypographyComponent },
   { path: 'widgets', component: PageWidgetsComponent },
   { path: 'calendar', component: PageCalendarComponent },
