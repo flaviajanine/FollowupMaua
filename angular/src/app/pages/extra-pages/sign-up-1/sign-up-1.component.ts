@@ -34,6 +34,17 @@ export class PageSignUp1Component implements OnInit {
   email: FormControl;
   senha: FormControl;
   confirmarSenha: FormControl;
+  cursos = [
+    {value: '1', viewValue: 'Engenharia Ciclo Básico'},
+    {value: '2', viewValue: 'Engenharia da Computação'},
+    {value: '3', viewValue: 'Engenharia de Controle e Automação'},
+    {value: '4', viewValue: 'Engenharia Elétrica'},
+    {value: '5', viewValue: 'Engenharia Eletrônica'},
+    {value: '6', viewValue: 'Engenharia de Alimentos'},
+    {value: '7', viewValue: 'Engenharia Química'},
+    {value: '8', viewValue: 'Engenharia de Produção'},
+    {value: '9', viewValue: 'Engenharia Civil'}
+  ];
   private url = './../../api/cadastrarAluno.php';
   
     ngOnInit() { 

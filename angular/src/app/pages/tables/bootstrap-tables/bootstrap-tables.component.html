@@ -2,38 +2,17 @@
 
 <div class="row">
   <div class="col-lg-6">
-    <ni-card title="Basic table">
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-          <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr ng-repeat = "values in data">
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+    <ni-card [customBgColor]="'#e6eeff'">
+        <md-list>
+            <md-list-item >
+             <h3 md-line class="h2">Nome:</h3>
+             <h3 md-line class="h3">{{nome}}</h3>
+            </md-list-item>
+            <md-list-item >
+                <h3 md-line class="h2">Email:</h3>
+                <h3 md-line class="h3">{{email}}</h3>
+               </md-list-item>
+          </md-list>
     </ni-card>
+      </div>
   </div>

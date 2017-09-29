@@ -7,7 +7,7 @@ import { SharedService } from '../../../layouts/shared-service';
 const BREADCRUMBS: any[] = [
   {
     title: 'Meu Perfil',
-    link: '#'
+    link: '/default-layout/bootstrap-tables'
   }
 ];
 
@@ -17,22 +17,27 @@ const BREADCRUMBS: any[] = [
   styleUrls: ['./bootstrap-tables.component.scss']
 })
 export class PageBootstrapTablesComponent implements OnInit {
-  pageTitle: string = 'Bootstrap table';
+  pageTitle: string = 'Minha Conta';
   breadcrumb: any[] = BREADCRUMBS;
+ // results: any[];
+  nome: string;
+  email: string;
 
   constructor( private _sharedService: SharedService,
     private router: Router,
     private apiservice: ApiService
   ) {
     this._sharedService.emitChange(this.pageTitle);
-    /*this.apiservice.getData()
-    .subscribe((res: Response) =>
+    this.apiservice.getData()
+    .subscribe( (res: Response) =>
     {
-      let values = res.json();
-    }
-  )
-  */
-  }
+      let data = res.json();    
+      this.nome = data.NOME;
+      this.email = data.EMAIL;
+      console.log(data);
+    });
+   
+}
 
   ngOnInit() {}
 }

@@ -9,8 +9,6 @@
 	$objDb = new db(); //instancio a classe para usar a função interna dela 
 	$link = $objDb->conecta_mysql(); //função interna da classe db
 
-	
-
 	//Padrão de todos os JSON
 	$nome = $obj['nome'];
 	$email = $obj['email'];

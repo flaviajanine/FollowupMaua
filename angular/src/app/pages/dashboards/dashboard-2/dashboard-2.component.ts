@@ -6,14 +6,6 @@ const BREADCRUMBS: any[] = [
   {
     title: 'Main',
     link: '#'
-  },
-  {
-    title: 'Dashboards',
-    link: '#'
-  },
-  {
-    title: 'Dashboard v2',
-    link: ''
   }
 ];
 const timelineData: any[] = [
@@ -54,7 +46,7 @@ const timelineData: any[] = [
   styleUrls: ['./dashboard-2.component.scss']
 })
 export class PageDashboard2Component implements OnInit {
-  pageTitle: string = 'Dashboard';
+  pageTitle: string = 'Dashboard Professor';
   breadcrumb: any[] = BREADCRUMBS;
   timelineData: any[] = timelineData;
   private chart: any;

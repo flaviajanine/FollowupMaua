@@ -131,12 +131,20 @@ const defaultRoutes: Routes = [
   { path: 'ngx-charts', component: PageNgxChartsComponent },
   { path: 'amcharts', component: PageAmchartsComponent },
   { path: 'simple-table', component: PageSimpleTableComponent },
-  { path: 'bootstrap-tables', component: PageBootstrapTablesComponent },
+  { 
+    path: 'bootstrap-tables', 
+    component: PageBootstrapTablesComponent,
+    canActivate: [AuthGuard]
+ },
   { path: 'editing-table', component: PageEditingTableComponent },
   { path: 'filtering-table', component: PageFilteringTableComponent },
   { path: 'pagination-table', component: PagePaginationTableComponent },
   { path: 'form-elements', component: PageFormElementsComponent },
-  { path: 'form-layout', component: PageFormLayoutComponent },
+  { 
+    path: 'form-layout', 
+    component: PageFormLayoutComponent,
+    canActivate: [AuthGuard]
+   },
   { path: 'form-validation', component: PageFormValidationComponent },
  // { path: 'google-map', component: PageGoogleMapComponent },
  // { path: 'leaflet-map', component: PageLeafletMapComponent },

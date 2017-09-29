@@ -3,15 +3,6 @@ export const MENU: any = [
     title: 'Main',
     groupTitle : true
   },
-   {
-    title: 'Dashboards',
-    icon: {
-      class: 'fa fa-home',
-      bg: '#ea8080',
-      color: 'rgba(0,0,0,.87)'
-    },
-    routing: '/default-layout/dashboard'
-   },
   {
     title: 'Calendário',
     icon: {

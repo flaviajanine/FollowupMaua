@@ -86,7 +86,7 @@ const timelineData: any[] = [
   styleUrls: ['./dashboard.component.scss']
 })
 export class PageDashboardComponent {
-  pageTitle: string = 'Dashboard';
+  pageTitle: string = 'Dashboard Aluno';
   breadcrumb: any[] = BREADCRUMBS;
   folders: any[] = folders;
   timelineData: any[] = timelineData;
