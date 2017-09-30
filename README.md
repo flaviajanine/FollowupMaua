@@ -1,5 +1,8 @@
 # MauAcompanha
-TCC dos alunos de computação.
+
+![alt text](https://github.com/flaviajanine/FollowupMaua/blob/master/logo.jpeg)
+
+TCC dos alunos de Engenharia de Computação.
 
 ## Deploy no localhost
 * dentro do dir MauAcompanha\angular
