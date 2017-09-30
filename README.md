@@ -1,4 +1,4 @@
-# MauAcompanha
+# Follow Up Mauá
 
 ![alt text](https://github.com/flaviajanine/FollowupMaua/blob/master/logo.jpeg)
 
