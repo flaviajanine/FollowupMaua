@@ -4,12 +4,6 @@ import { AmChartsService } from '@amcharts/amcharts3-angular';
 import { User } from '../../../ni-components/ni-chat/user';
 import { Message } from '../../../ni-components/ni-chat/message';
 
-const BREADCRUMBS: any[] = [
-  {
-    title: 'Main',
-    link: '#'
-  }
-];
 const timelineData: any[] = [
   {
     'timeline': [
@@ -44,7 +38,6 @@ const timelineData: any[] = [
 })
 export class PageDashboard3Component implements OnInit {
   pageTitle: string = 'Dashboard Admin';
-  breadcrumb: any[] = BREADCRUMBS;
   timelineData: any[] = timelineData;
   private chart: any;
   activeUser: User = {

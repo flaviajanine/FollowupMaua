@@ -5,6 +5,3 @@ $score_url = 'https://ibm-watson-ml.mybluemix.net/pm/v1/score/modelo1?accesskey=
     $body = file_get_contents('php://input');
 	$body = trim($body);
 	$obj = json_decode($body,true);
-
-	$header = 
-	$data = $obj['email'];

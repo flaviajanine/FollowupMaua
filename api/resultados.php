@@ -10,8 +10,6 @@ if ($file = fopen("modelo1.csv", "r")) {
         $line = fgets($file);
         if($counter == 0){
             $header[] = explode(";",$line);            
-           // var_dump($header);
-           // echo($line);
         } else {
         $newline = explode(";",$line);
         if($newline[11] == "") {
@@ -27,34 +25,30 @@ if ($file = fopen("modelo1.csv", "r")) {
         $counter++;
     }
     fclose($file);
-  //  var_dump($data);
 }
 
-
+$header =  ["Exer","RA","Cur","Ser","Per","Fingr","StIni","StFin","OriDisc","StIniDisc","StFinDisc", "P1","T1","MT","MP","MF","SituaçãoFinal"];
 $data2 = [["2015", "2002.000","EN", "3.000","D","RTRG","REP","RET","REG", "MDT", "TRC", "6,5","8,5","7.8","7","7.2",null]];
 $tablename = "modelo1.xls";
 $params = array("tablename"=>$tablename, "header"=>$header, "data"=>$data2);
+$body = json_encode($params);
+echo $body;
 $score_url = 'https://ibm-watson-ml.mybluemix.net/pm/v1/score/modelo1?accesskey=5yXyFZuLy7uXMxMqFZsjXMG2lnvy48RqATPaknXgwstjpDer/bvOG9LshGMltn4uHxGxQ3pIogjgEOjN0TGDTcL0h32gVzPkwMbmHXNpi+H0ZOFm8wNYEEAISjNZ5ulwaR1+ZBm1y9+T/UDJtYvbXhzUtXufnZwJ+gQBSAR2uqE=';
-/*
-$ch = curl_init($score_url);
 
+$contextData = array (
+    'method' => 'POST',
+    'header' => "Connection: close\r\n".
+                "Content-Length: ".strlen($body)."\r\n",
+    'content'=> $body );
 
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$context = stream_context_create (array ( 'http' => $contextData ));
 
-$response = curl_exec($ch);
-curl_close($ch);
-*/
+$result =  file_get_contents (
+      $score_url, 
+      false,
+      $context);
 
-$postString = http_build_query($params);
-$ch = curl_init($score_url);                                                                      
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
-curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);                                                                  
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-$server_output = curl_exec ($ch);
-var_dump($server_output);
+var_dump($result);
 
 /*
 if(isset($_ENV['VCAP_SERVICES'])){
@@ -66,7 +60,3 @@ if(isset($_ENV['VCAP_SERVICES'])){
     $username = $vcap_services["pm-20"][0]['credentials']['username'];
 }
 */
-//$env = array('baseURL'=>$url,'accessKey'=>$access_key);
-//json_encode($env);
-
-//$score_url = $env['baseURL'].'pm/v1/score/modelo1'.'?accessKey='.$env['accessKey']; 
