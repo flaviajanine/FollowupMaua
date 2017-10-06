@@ -31,8 +31,6 @@ import { AuthAluno }                        from './services/auth-guard/auth-alu
 import { AuthProf }                         from './services/auth-guard/auth-prof.service';
 import { AuthAdmin }                        from './services/auth-guard/auth-admin.service';
 
-// tratamento de erro
-
 @NgModule({
 
   declarations : [
@@ -64,7 +62,7 @@ import { AuthAdmin }                        from './services/auth-guard/auth-adm
      AuthGuard,
      AuthAdmin,
      AuthAluno,
-     AuthProf
+     AuthProf,
   ],
   bootstrap: [ AppComponent ]
 })

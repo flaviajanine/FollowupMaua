@@ -1,8 +1,11 @@
-import { Http } from '@angular/http';
+import { FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
+import { Http, Response } from '@angular/http';
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { SharedService } from '../../../layouts/shared-service';
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/map";
+import 'rxjs/add/operator/catch';
 
 @Component({
   selector: 'page-dashboard-3',
@@ -11,23 +14,40 @@ import "rxjs/add/operator/map";
 })
 
 
-const URL = './../../file/functions.php';
-
 export class PageDashboard3Component implements OnInit {
-  pageTitle: string = 'Dashboard Admin';
+  pageTitle: string = 'Administrador';
   private chart: any;
- 
-  constructor( private _sharedService: SharedService,
-               private http: Http, 
-               private el: ElementRef ) {
-    this._sharedService.emitChange(this.pageTitle);
-    
-  }
 
+  constructor(private _sharedService: SharedService,
+              private elem: ElementRef,
+              private http: Http) {
+    this._sharedService.emitChange(this.pageTitle);
+
+  }
 
   ngOnInit() {
+
   }
   ngOnDestroy() {
+
+  }
+
+  public uploadFile(): void {
+    let url = './../../file/fileUpload.php';
+    let files = this.elem.nativeElement.querySelector('#selectFile').files;
+    let formData = new FormData();
+    let file = files[0];
+    formData.append('selectFile', file);
+    console.log(formData);
+      this.http.post(url, formData)
+      .subscribe(
+          data => {
+            alert("Arquivo enviado com sucesso");
+            console.log('success');
+          },
+          error => console.log(error)
+      )
+        
   }
 
   // Pie
@@ -55,31 +75,12 @@ export class PageDashboard3Component implements OnInit {
   public pieChartType: string = 'pie';
   public pieChartOptions: any = {
     elements: {
-      arc : {
+      arc: {
         borderWidth: 0
       }
     },
     tooltips: false
   };
 
-  upload() {
-    let inputEl: HTMLInputElement = this.el.nativeElement.querySelector('#photo');
-    console.log("iam+ "+inputEl);
-    let fileCount: number = inputEl.files.length;
-    let formData = new FormData();
-    if (fileCount > 0) { // a file was selected
-        for (let i = 0; i < fileCount; i++) {
-            formData.append('photo', inputEl.files.item(i));
-        }
-        this.http
-            .post(URL, formData).map((res:any) => res).subscribe(
-                (success) => {
-                 alert(success._body);
-              },
-                (error) => alert(error)
-            );
-
-    }
-   }
 
 }

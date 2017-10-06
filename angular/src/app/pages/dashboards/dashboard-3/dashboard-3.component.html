@@ -1,35 +1,34 @@
 <!--
 <ni-breadcrumb [menu]="breadcrumb" [style]="'custom1'" class="mb-4"></ni-breadcrumb>
 -->
-
+<div class="row">
 <div class="col-xl-12">
   <ni-card [title]="'Envio de um novo arquivo'">
-    <div class="col-md-6">
-      <p>Escolha um arquivo para enviar.</p>
 
-      <input id="photo" type="file" />
-      <button type="button" class="btn btn-success btn-s" (click)="upload()">
-      Upload </button>
-    </div>
-    <div class="col-md-6">
-      <ni-card [customBgColor]="'rgba(100,181,246,0.9)'" [customColor]="'#fff'" [bgImage]="'assets/content/card-6.jpg'" class="info-card">
-        <div class="title text-uppercase">Gerar Relatório</div>
-        <ni-badge [customColor]="'rgba(255,255,255,0.3)'" [borderRadius]="false">+210</ni-badge>
-      </ni-card>
-    </div>
+    <p>Escolha um arquivo para enviar.</p>
+    <form>
+      <div class="form-group">
+        <input type="file" id="selectFile" name="selectFile" class="btn btn-success"/>
+        <button ni-button [gradient]="['#252D47', '#3366cc']" type="button" style="color: white" (click)="uploadFile()"><i class="fa fa-file"></i> Enviar</button>
+      </div>
 
+    </form>
   </ni-card>
 </div>
-<div class="col-xl-4">
-  <ni-card [bgColor]="''" class="chart-card">
-    <div class="chart">
-      <canvas baseChart [data]="pieChartData" [colors]="pieChartColors" [labels]="pieChartLabels" [legend]="false" [options]="pieChartOptions"
-        [chartType]="pieChartType"></canvas>
-    </div>
-    <div class="info">
-      <div class="title"><strong>930</strong> <small>Resolved</small></div>
-      <div class="small">More than 70% resolved issues</div>
-    </div>
+</div>
+<div class="row">
+<div class="col-md-6">
+    <ni-card [customBgColor]="'rgba(100,181,246,0.9)'" [customColor]="'#fff'" [bgImage]="'assets/content/card-3.jpg'" class="info-card">
+      <div class="title text-uppercase">Gerar Predições</div>
+      <!-- <ni-badge [customColor]="'rgba(255,255,255,0.3)'" [borderRadius]="false"></ni-badge> -->
+    </ni-card>
 
+</div>
+
+<div class="col-md-6">
+  <ni-card [customBgColor]="'rgba(100,181,246,0.9)'" [customColor]="'#fff'" [bgImage]="'assets/content/card-6.jpg'" class="info-card">
+    <div class="title text-uppercase">Gerar Relatório</div>
+    <!-- <ni-badge [customColor]="'rgba(255,255,255,0.3)'" [borderRadius]="false"></ni-badge> -->
   </ni-card>
+</div>
 </div>
