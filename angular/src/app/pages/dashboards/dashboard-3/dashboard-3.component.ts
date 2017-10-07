@@ -33,7 +33,7 @@ export class PageDashboard3Component implements OnInit {
   }
 
   public uploadFile(): void {
-    let url = './../../file/fileUpload.php';
+    let url = './../../api/fileUpload.php';
     let files = this.elem.nativeElement.querySelector('#selectFile').files;
     let formData = new FormData();
     let file = files[0];
