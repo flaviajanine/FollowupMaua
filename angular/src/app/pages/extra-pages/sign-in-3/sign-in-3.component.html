@@ -1,7 +1,10 @@
 <ni-card [title]="''" [align]="'center'">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
+      <img src="assets/img/logo-compress.png" alt="" width="38" height="33" class="logo-img">
+
       <div class="form-group">
+
     <md-input-container>
       <input mdInput placeholder="Usuário" id="email" formControlName="email" value="" class="form-control">
       <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
