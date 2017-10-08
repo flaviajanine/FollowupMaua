@@ -1,96 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../../layouts/shared-service';
 
-const BREADCRUMBS: any[] = [
-  {
-    title: 'Pages',
-    link: '#'
-  },
-  {
-    title: 'Page service',
-    link: '#'
-  },
-  {
-    title: 'Timeline',
-    link: ''
-  }
-];
-
 const timelineData: any[] = [
   {
     'label': '2017',
     'timeline': [
       {
-        'date': '2 hours ago',
-        'content': `Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula ut id elit.`,
-        'pointColor': '#ea8080'
-      },
-      {
-        'date': '5 hours ago',
-        'content': `Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula ut id elit.
-         Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula ut id elit.`,
-        'pointColor': '#915035'
-      },
-      {
-        'date': '8 hours ago',
-        'content': `Lorem ipsum dolor sit amet.`,
-        'pointColor': '#B925FF'
-      },
-      {
-        'date': '2 days ago',
-        'content': `Lorem ipsum dolor sit amet, consectetur adipisicing elit.`,
+        'date': 'Outubro, 2017',
+        'content': `Primeira versão.`,
         'pointColor': '#C5CAE9'
       },
       {
-        'date': '3 days ago',
-        'content': `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet blanditiis doloremque earum itaque laborum, nobis non ratione rerum similique vel?`,
+        'date': 'Agosto, 2017',
+        'content': `Modelagem final.`,
         'pointColor': '#FF8A65'
       },
       {
-        'date': '5 days ago',
-        'content': `Lorem ipsum dolor sit.`,
+        'date': 'Julho, 2017',
+        'content': `Conversas com desenvolvedores Watson.`,
         'pointColor': '#B3E5FC'
       },
       {
-        'date': 'July 10, 2017',
-        'content': `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate.`,
+        'date': 'Maio, 2017',
+        'content': `Estudos das ferramentas.`,
         'pointColor': '#B2DFDB'
       },
       {
-        'date': 'July 7, 2017',
-        'content': `Lorem ipsum dolor sit amet, consectetur.`,
+        'date': 'Março, 2017',
+        'content': `Definição de escopo, requerimento de dados.`,
         'pointColor': '#3E5EFF'
       }
-    ]
-  },
-  {
-    'label': '2016',
-    'timeline': [
-      {
-        'date': 'December 27, 2016',
-        'content': `Lorem ipsum dolor sit.`,
-        'pointColor': '#FFC6E6'
-      },
-      {
-        'date': 'December 20, 2016',
-        'content': `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.`,
-        'pointColor': '#FFA78D'
-      },
-      {
-        'date': 'December 17, 2016',
-        'content': `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate.`,
-        'pointColor': '#F0F4C3'
-      },
-      {
-        'date': 'December 12, 2016',
-        'content': `Lorem ipsum dolor sit amet, consectetur.`,
-        'pointColor': '#FFC6F1'
-      },
-      {
-        'date': 'December 2, 2016',
-        'content': `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.`,
-        'pointColor': '#488034'
-      },
     ]
   }
 ];
@@ -102,7 +41,6 @@ const timelineData: any[] = [
 })
 export class PageTimelineComponent implements OnInit {
   pageTitle: string = 'Timeline';
-  breadcrumb: any[] = BREADCRUMBS;
   timelineData: any[] = timelineData;
 
   constructor( private _sharedService: SharedService ) {

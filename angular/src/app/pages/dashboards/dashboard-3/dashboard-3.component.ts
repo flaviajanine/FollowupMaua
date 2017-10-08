@@ -50,6 +50,13 @@ export class PageDashboard3Component implements OnInit {
         
   }
 
+  predict(){
+
+  }
+
+  relatorio(){
+    
+  }
   // Pie
   public pieChartLabels: string[] = [
     'Angular',

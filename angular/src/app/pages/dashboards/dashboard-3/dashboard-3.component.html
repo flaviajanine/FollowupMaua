@@ -7,18 +7,18 @@
     <p>Escolha um arquivo para enviar.</p>
     <form>
       <div class="form-group">
-        <input type="file" id="selectFile" name="selectFile" class="btn btn-success"/>
-        <button ni-button [gradient]="['#252D47', '#3366cc']" type="button" style="color: white" (click)="uploadFile()"><i class="fa fa-file"></i> Enviar</button>
+        <input type="file" id="selectFile" name="selectFile" class="btn btn-default"/>
+        <button ni-button [gradient]="['#252D47', '#3366cc']" type="button" style="color: white" (click)="uploadFile()" class="btn-lg"><i class="fa fa-file"></i> Enviar</button>
       </div>
 
     </form>
   </ni-card>
 </div>
 </div>
-<div class="row">
+<div class="row" style='height:"200"'>
 <div class="col-md-6">
     <ni-card [customBgColor]="'rgba(100,181,246,0.9)'" [customColor]="'#fff'" [bgImage]="'assets/content/card-3.jpg'" class="info-card">
-      <div class="title text-uppercase">Gerar Predições</div>
+      <div class="title text-uppercase" (click) = "predict()">Gerar Predições</div>
       <!-- <ni-badge [customColor]="'rgba(255,255,255,0.3)'" [borderRadius]="false"></ni-badge> -->
     </ni-card>
 
@@ -26,7 +26,7 @@
 
 <div class="col-md-6">
   <ni-card [customBgColor]="'rgba(100,181,246,0.9)'" [customColor]="'#fff'" [bgImage]="'assets/content/card-6.jpg'" class="info-card">
-    <div class="title text-uppercase">Gerar Relatório</div>
+    <div class="title text-uppercase" (click) = "relatorio()">Gerar Relatório</div>
     <!-- <ni-badge [customColor]="'rgba(255,255,255,0.3)'" [borderRadius]="false"></ni-badge> -->
   </ni-card>
 </div>

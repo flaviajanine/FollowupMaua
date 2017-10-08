@@ -16,9 +16,9 @@ export class PageDashboardComponent {
   constructor( private AmCharts: AmChartsService, private _sharedService: SharedService ) {
     this._sharedService.emitChange(this.pageTitle);
   }
-
+  
   ngOnInit() {
-     this.chart = this.AmCharts.makeChart('amchart-3', {
+    this.chart = this.AmCharts.makeChart('amchart-3', {
       'type': 'serial',
       'addClassNames': true,
       'theme': 'light',
@@ -33,32 +33,36 @@ export class PageDashboardComponent {
         'verticalPadding': 8,
         'color': '#ffffff'
       },
-
+  
       'dataProvider': [ {
-        'prova': 'P1',
-        'nota': 5
+        'prova': "P1",
+        'nota': 8.5,
+        'média geral': 7.5
       }, {
-        'prova': 'P2',
-        'nota': 8
+        'prova': "P2",
+        'nota': 5.5,
+        'média geral': 6.5
+      }, {
+        'prova': "PS1",
+        'nota': 6.5,
+        'média geral': 7.5
+      }, {
+        'prova': "P3",
+        'nota': 5.5,
+        'média geral': 4.5,
       },
       {
-        'prova': 'PSUB1',
-        'nota': 8
-      },
-       {
-        'prova': 'P3',
-        'nota': 7,
-        'dashLengthLine': 5
-      }, {
-        'prova': 'P4',
-        'nota': 6,
+        'prova': "P4",
+        'nota': 6.5,
+        'média geral': 6.5,
         'dashLengthColumn': 5,
         'alpha': 0.2,
         'additional': '(projection)'
       },
       {
-        'prova': 'PSUB2',
-        'nota': 6,
+        'prova': "PS2",
+        'nota': 0,
+        'média geral': 5,
         'dashLengthColumn': 5,
         'alpha': 0.2,
         'additional': '(projection)'
@@ -89,8 +93,8 @@ export class PageDashboardComponent {
         'bulletBorderThickness': 3,
         'fillAlphas': 0,
         'lineAlpha': 1,
-        'title': 'Notas',
-        'valueField': 'notas',
+        'title': 'Média geral',
+        'valueField': 'média geral',
         'dashLengthField': 'dashLengthLine'
       } ],
       'categoryField': 'prova',
@@ -101,5 +105,31 @@ export class PageDashboardComponent {
       }
     });
 
+    this.chart = this.AmCharts.makeChart('amchart-5', {
+      'type': 'pie',
+      'theme': 'light',
+      'dataProvider': [
+        {
+          'Situação': 'Aprovado',
+          'value': 70
+        }, {
+          'Situação': 'Reprovado',
+          'value': 30
+        }
+      ],
+      'titleField': 'Situação',
+      'valueField': 'value',
+      'labelRadius': 5,
+
+      'radius': '42%',
+      'innerRadius': '60%',
+      'labelText': '[[Situação]]'
+    });
+
   }
+
+  ngOnDestroy() {
+    this.AmCharts.destroyChart(this.chart);
+  }
+  
 }

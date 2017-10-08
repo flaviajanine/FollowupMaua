@@ -6,17 +6,6 @@ import { Subject } from 'rxjs/Subject';
 import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent } from 'angular-calendar';
 import { SharedService } from '../../layouts/shared-service';
 
-const BREADCRUMBS: any[] = [
-  {
-    title: 'Main',
-    link: '#'
-  },
-  {
-    title: 'Calendar',
-    link: ''
-  }
-];
-
 const colors: any = {
   red: {
     primary: '#ad2121',
@@ -39,8 +28,7 @@ const colors: any = {
   styleUrls: ['./calendar.component.scss']
 })
 export class PageCalendarComponent implements OnInit {
-  pageTitle: string = 'Calendar';
-  breadcrumb: any[] = BREADCRUMBS;
+  pageTitle: string = 'Calendário';
   dialogRef: MdDialogRef<CalendarDialogComponent>;
   lastCloseResult: string;
   actionsAlignment: string;

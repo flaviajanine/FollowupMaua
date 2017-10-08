@@ -7,45 +7,45 @@ export const MENU: any = [
     title: 'Calendário',
     icon: {
       class: 'fa fa-calendar',
-      bg: '#C5CAE9',
+      bg: '#a2d8bd',
       color: 'rgba(0,0,0,.87)'
     },
     routing: '/default-layout/calendar'
   },
   {
-    title: 'Notas',
+    title: 'Disciplinas Cadastradas',
     icon: {
-      class: 'fa fa-table',
+      class: 'fa fa-check',
       bg: '#FFE082',
       color: 'rgba(0,0,0,.87)'
     },
     sub: [
       {
-        title: 'Inserir Notas',
-        routing: '/default-layout/form-layout'
+        title: 'Todas as disciplinas',
+        routing: '/default-layout/list'
       }
     ]
   },
   {
-    title: 'Charts',
+    title: 'Sobre o sistema',
     icon: {
-      class: 'fa fa-pie-chart',
-      bg: '#BCAAA4',
+      class: 'fa fa-cogs',
+      bg: '#9dcde4',
       color: 'rgba(0,0,0,.87)'
     },
     sub: [
       {
-        title: 'Ng2 Charts',
-        routing: '/default-layout/ng2-charts'
+        title: 'O Sistema',
+        routing: '/default-layout/timeline'
       },
       {
-        title: 'Ngx Charts',
-        routing: '/default-layout/ngx-charts'
+        title: 'Fale Conosco',
+        routing: '/default-layout/invoice'
       }
       ,
       {
-        title: 'Amcharts',
-        routing: '/default-layout/amcharts'
+        title: 'Nosso Time',
+        routing: '/default-layout/about-us'
       }
     ]
   },

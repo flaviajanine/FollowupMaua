@@ -1,20 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../../layouts/shared-service';
 
-const BREADCRUMBS: any[] = [
-  {
-    title: 'Pages',
-    link: '#'
-  },
-  {
-    title: 'Page service',
-    link: '#'
-  },
-  {
-    title: 'Invoice',
-    link: ''
-  }
-];
 
 @Component({
   selector: 'page-invoice',
@@ -22,8 +8,7 @@ const BREADCRUMBS: any[] = [
   styleUrls: ['./invoice.component.scss']
 })
 export class PageInvoiceComponent implements OnInit {
-  pageTitle: string = 'Invoice';
-  breadcrumb: any[] = BREADCRUMBS;
+  pageTitle: string = 'Contato';
 
   constructor( private _sharedService: SharedService ) {
     this._sharedService.emitChange(this.pageTitle);

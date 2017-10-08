@@ -3,11 +3,16 @@
 -->
 
 <div class="row">
-  <div class="col-xl-12">
+  <div class="col-md-6">
     <ni-card title="Média de desempenho dos alunos">
-      <div id="amchart-1" [style.width.%]="100" [style.height.px]="400"></div>
+      <div id="amchart-3" [style.width.%]="100" [style.height.px]="400"></div>
     </ni-card>
-    
   </div>
 
- 
+  <div class="col-md-6">
+    <ni-card title="Previsão Situação Geral" class="mb-0">
+      <canvas baseChart [data]="polarAreaChartData" [labels]="polarAreaChartLabels" [legend]="polarAreaLegend" [chartType]="polarAreaChartType"
+        [options]="polarAreaChartOptions"></canvas>
+    </ni-card>
+  </div>
+</div>
