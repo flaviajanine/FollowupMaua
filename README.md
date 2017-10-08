@@ -34,6 +34,6 @@ cf login
 ```
 * Push nos arquivos, com instalação do buildpack.
 ```
-cf push testeMauacompanha123 -b https://github.com/cloudfoundry/php-buildpack.git/
+cf push followupMaua -b https://github.com/cloudfoundry/php-buildpack.git/
 ```
 * Ir no painel do bluemix e reiniciar o app.
