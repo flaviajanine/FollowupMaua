@@ -6,7 +6,7 @@ export class ApiService {
 
   constructor( private http: Http ) { }
 
-  private url = './../../api/infos.php';
+  private url = './infos.php';
  
   getData() {
     return this.http.get(this.url); 

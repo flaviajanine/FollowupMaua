@@ -10,7 +10,7 @@ export class LogoutService {
                private router: Router
               ) { }
 
-  private url = './../../api/sair.php';
+  private url = './sair.php';
   private logged = true;
 
   logout(){

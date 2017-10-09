@@ -28,6 +28,7 @@ if($resultado_id){
 
 	if(isset($dados_usuario['idusuario'])){
 
+		$_SESSION['idusuario'] = $dados_usuario['idusuario'];
 		$_SESSION['nome_usuario'] = $dados_usuario['nome_usuario'];
 		$_SESSION['email_usuario'] = $dados_usuario['email_usuario'];
 		$_SESSION['categoria'] = $dados_usuario['categoria'];

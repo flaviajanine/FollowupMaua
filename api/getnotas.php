@@ -37,7 +37,7 @@ $params = array("tablename"=>$tablename, "header"=>$header, "data"=>$data);
 $body = json_encode($params);
 
 // Setup cURL
-	$ch = curl_init('https://ibm-watson-ml.mybluemix.net/pm/v1/score/P3?accesskey=5yXyFZuLy7uXMxMqFZsjXMG2lnvy48RqATPaknXgwstjpDer/bvOG9LshGMltn4uHxGxQ3pIogjgEOjN0TGDTcL0h32gVzPkwMbmHXNpi+H0ZOFm8wNYEEAISjNZ5ulwaR1+ZBm1y9+T/UDJtYvbXhzUtXufnZwJ+gQBSAR2uqE=');
+	$ch = curl_init('https://ibm-watson-ml.mybluemix.net/pm/v1/score/P4nota?accesskey=5yXyFZuLy7uXMxMqFZsjXMG2lnvy48RqATPaknXgwstjpDer/bvOG9LshGMltn4uHxGxQ3pIogjgEOjN0TGDTcL0h32gVzPkwMbmHXNpi+H0ZOFm8wNYEEAISjNZ5ulwaR1+ZBm1y9+T/UDJtYvbXhzUtXufnZwJ+gQBSAR2uqE=');
 	curl_setopt_array($ch, array(
     CURLOPT_POST => TRUE,
     CURLOPT_RETURNTRANSFER => TRUE,
@@ -71,11 +71,9 @@ $x = mysqli_num_rows($res);
 for ($i=1; $i <= $x; $i++){ 
 
 
-	$var1 = $responseData[0]['data'][$i-1][51];
-	$var2 = $responseData[0]['data'][$i-1][52];
+	$var1 = $responseData[0]['data'][$i-1][31];
 
-
-	$sql = "UPDATE tb_infos SET Aprovado = '$var1', Acuracia = '$var2' WHERE id = '$i'";
+	$sql = "UPDATE tb_infos SET P4 = '$var1' WHERE id = '$i'";
 
 	$r = mysqli_query($link, $sql) or die ("Erro na query insert");
 

@@ -13,7 +13,7 @@ export const MENU: any = [
     routing: '/default-layout/calendar'
   },
   {
-    title: 'Disciplinas Cadastradas',
+    title: 'Disciplinas',
     icon: {
       class: 'fa fa-check',
       bg: '#FFE082',
@@ -27,7 +27,7 @@ export const MENU: any = [
     ]
   },
   {
-    title: 'Sobre o sistema',
+    title: 'Sobre',
     icon: {
       class: 'fa fa-cogs',
       bg: '#9dcde4',

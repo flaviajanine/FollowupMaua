@@ -10,7 +10,7 @@ export class LoginService {
     private router: Router
   ) { }
 
-  private url = './../../api/validar_acesso.php';
+  private url = './validar_acesso.php';
   private isaluno = false;
   private isprof = false;
   private isadmin = false;

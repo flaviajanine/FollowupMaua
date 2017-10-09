@@ -1,3 +1,4 @@
+import { Http, Response } from '@angular/http';
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../../layouts/shared-service';
 import { AmChartsService } from '@amcharts/amcharts3-angular';
@@ -12,12 +13,95 @@ import { AmChartsService } from '@amcharts/amcharts3-angular';
 export class PageDashboardComponent {
   pageTitle: string = 'Dashboard Aluno';
   private chart: any;
+  private grafdata = [];
+  private grafdata2 = [];
+  sit2: string;
 
-  constructor( private AmCharts: AmChartsService, private _sharedService: SharedService ) {
+  constructor( private AmCharts: AmChartsService, 
+               private http: Http,
+               private _sharedService: SharedService ) {
     this._sharedService.emitChange(this.pageTitle);
   }
   
   ngOnInit() {
+
+    let url = './infoAluno.php';
+    this.http.get(url)
+      .subscribe(
+        (res: Response) =>
+    {
+      let data = res.json();
+
+      let sit = data.Situacao;
+      let nivel = parseFloat(data.NivelConf);
+      let P1 = parseFloat(data.P1);
+      let P2 = parseFloat(data.P2);
+      let P3 = parseFloat(data.P3);
+      let P4 = parseFloat(data.P4);
+      let PS1 = parseFloat(data.PS1);
+      let PS2 = 0;
+      let MP1 = parseFloat(data.MP1);
+      let MP2 = parseFloat(data.MP2);
+      let MP3 = parseFloat(data.MP3);;
+      let MP4 = parseFloat(data.MP4);;
+      let MPS1 = parseFloat(data.MPS1);
+      let MPS2 = parseFloat(data.MPS2);;
+      
+        if(sit === "AP1"){
+          this.sit2 = "RP1";
+        }else{
+          this.sit2 = "AP1";
+        }
+
+
+      console.log(data);
+
+      this.grafdata2.push({
+        Situacao: sit,
+        value: nivel         
+      });
+      this.grafdata2.push({
+        Situacao: this.sit2,
+        value: (1-nivel)         
+      });
+      
+      this.grafdata.push({
+        prova: 'P1',
+        nota: P1,
+        Mgeral: MP1
+      });
+      this.grafdata.push({
+        prova: 'P2',
+        nota: P2,
+        Mgeral: MP2
+      });
+      this.grafdata.push({
+        prova: 'PS1',
+        nota: PS1,
+        Mgeral: MPS1
+      });
+      this.grafdata.push({
+        prova: 'P3',
+        nota: P3,
+        Mgeral: MP3
+      });
+      this.grafdata.push({
+        prova: 'P4',
+        nota: P4,
+        Mgeral: MP4,
+        dashLengthColumn: 5,
+        alpha: 0.2,
+        additional: '(projection)'
+      });
+      this.grafdata.push({
+        prova: 'PS2',
+        nota: PS2,
+        Mgeral : MPS2,
+        dashLengthColumn: 5,
+        alpha: 0.2,
+        additional: '(projection)'
+      });
+      
     this.chart = this.AmCharts.makeChart('amchart-3', {
       'type': 'serial',
       'addClassNames': true,
@@ -33,41 +117,7 @@ export class PageDashboardComponent {
         'verticalPadding': 8,
         'color': '#ffffff'
       },
-  
-      'dataProvider': [ {
-        'prova': "P1",
-        'nota': 8.5,
-        'média geral': 7.5
-      }, {
-        'prova': "P2",
-        'nota': 5.5,
-        'média geral': 6.5
-      }, {
-        'prova': "PS1",
-        'nota': 6.5,
-        'média geral': 7.5
-      }, {
-        'prova': "P3",
-        'nota': 5.5,
-        'média geral': 4.5,
-      },
-      {
-        'prova': "P4",
-        'nota': 6.5,
-        'média geral': 6.5,
-        'dashLengthColumn': 5,
-        'alpha': 0.2,
-        'additional': '(projection)'
-      },
-      {
-        'prova': "PS2",
-        'nota': 0,
-        'média geral': 5,
-        'dashLengthColumn': 5,
-        'alpha': 0.2,
-        'additional': '(projection)'
-      }
-     ],
+      'dataProvider': this.grafdata,
       'valueAxes': [ {
         'axisAlpha': 0,
         'position': 'left'
@@ -93,8 +143,8 @@ export class PageDashboardComponent {
         'bulletBorderThickness': 3,
         'fillAlphas': 0,
         'lineAlpha': 1,
-        'title': 'Média geral',
-        'valueField': 'média geral',
+        'title': 'Mgeral',
+        'valueField': 'Mgeral',
         'dashLengthField': 'dashLengthLine'
       } ],
       'categoryField': 'prova',
@@ -108,24 +158,18 @@ export class PageDashboardComponent {
     this.chart = this.AmCharts.makeChart('amchart-5', {
       'type': 'pie',
       'theme': 'light',
-      'dataProvider': [
-        {
-          'Situação': 'Aprovado',
-          'value': 70
-        }, {
-          'Situação': 'Reprovado',
-          'value': 30
-        }
-      ],
-      'titleField': 'Situação',
+      'dataProvider': this.grafdata2,
+      'titleField': 'Situacao',
       'valueField': 'value',
       'labelRadius': 5,
 
       'radius': '42%',
       'innerRadius': '60%',
-      'labelText': '[[Situação]]'
+      'labelText': '[[Situacao]]'
     });
 
+    }
+      );
   }
 
   ngOnDestroy() {

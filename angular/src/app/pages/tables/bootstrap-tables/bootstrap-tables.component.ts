@@ -4,12 +4,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../../layouts/shared-service';
 
-const BREADCRUMBS: any[] = [
-  {
-    title: 'Meu Perfil',
-    link: '/default-layout/bootstrap-tables'
-  }
-];
+
 
 @Component({
   selector: 'page-bootstrap-tables',
@@ -18,8 +13,6 @@ const BREADCRUMBS: any[] = [
 })
 export class PageBootstrapTablesComponent implements OnInit {
   pageTitle: string = 'Minha Conta';
-  breadcrumb: any[] = BREADCRUMBS;
- // results: any[];
   nome: string;
   email: string;
 

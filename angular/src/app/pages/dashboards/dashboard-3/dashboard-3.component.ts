@@ -33,7 +33,7 @@ export class PageDashboard3Component implements OnInit {
   }
 
   public uploadFile(): void {
-    let url = './../../api/fileUpload.php';
+    let url = './fileUpload.php';
     let files = this.elem.nativeElement.querySelector('#selectFile').files;
     let formData = new FormData();
     let file = files[0];
@@ -51,7 +51,12 @@ export class PageDashboard3Component implements OnInit {
   }
 
   predict(){
-
+      let url = './post.php';
+      this.http.get(url)
+      .subscribe();
+      let url2 = './getnotas.php';
+      this.http.get(url2)
+      .subscribe();
   }
 
   relatorio(){
