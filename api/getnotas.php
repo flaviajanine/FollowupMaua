@@ -71,7 +71,7 @@ $x = mysqli_num_rows($res);
 for ($i=1; $i <= $x; $i++){ 
 
 
-	$var1 = $responseData[0]['data'][$i-1][31];
+	$var1 = $responseData[0]['data'][$i-1][52];
 
 	$sql = "UPDATE tb_infos SET P4 = '$var1' WHERE id = '$i'";
 

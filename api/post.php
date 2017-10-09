@@ -71,8 +71,8 @@ $x = mysqli_num_rows($res);
 for ($i=1; $i <= $x; $i++){ 
 
 
-	$var1 = $responseData[0]['data'][$i-1][51];
-	$var2 = $responseData[0]['data'][$i-1][52];
+	$var1 = $responseData[0]['data'][$i-1][52];
+	$var2 = $responseData[0]['data'][$i-1][53];
 
 
 	$sql = "UPDATE tb_infos SET Aprovado = '$var1', Acuracia = '$var2' WHERE id = '$i'";

@@ -15,7 +15,7 @@ export class PageDashboardComponent {
   private chart: any;
   private grafdata = [];
   private grafdata2 = [];
-  sit2: string;
+  private sit2: string;
 
   constructor( private AmCharts: AmChartsService, 
                private http: Http,
@@ -33,7 +33,6 @@ export class PageDashboardComponent {
       let data = res.json();
 
       let sit = data.Situacao;
-      let nivel = parseFloat(data.NivelConf);
       let P1 = parseFloat(data.P1);
       let P2 = parseFloat(data.P2);
       let P3 = parseFloat(data.P3);
@@ -47,23 +46,20 @@ export class PageDashboardComponent {
       let MPS1 = parseFloat(data.MPS1);
       let MPS2 = parseFloat(data.MPS2);;
       
-        if(sit === "AP1"){
-          this.sit2 = "RP1";
-        }else{
-          this.sit2 = "AP1";
-        }
-
+     if(data.Situacao === "AP1"){ this.sit2 = "RP1"; }else{ this.sit2 = "AP1"; }
 
       console.log(data);
 
       this.grafdata2.push({
         Situacao: sit,
-        value: nivel         
+        value: parseFloat(data.NivelConf)         
       });
       this.grafdata2.push({
         Situacao: this.sit2,
-        value: (1-nivel)         
+        value: 1 - parseFloat(data.NivelConf)        
       });
+
+      console.log(this.grafdata2);
       
       this.grafdata.push({
         prova: 'P1',

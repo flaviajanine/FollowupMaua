@@ -44,7 +44,7 @@ if(isset($_SESSION['categoria'])){
 
 
 
-		$out = array('MP1'=>$linha[0],'MP2'=>$linha[1],'MPS1'=>$linha[2],'MP3'=>$linha[3],'MP4'=>$linha[4],'MPS2'=>$linha[5],'Situacao'=>$linha2[52],'Nivel Conf'=>$linha2[53],'P1'=>$linha2[27],'P2'=>$linha2[28],'PS1'=>$linha2[29],'P3'=>$linha2[30],'P4'=>$linha2[31],'PS2'=>$linha2[32]);
+		$out = array('MP1'=>$linha[0],'MP2'=>$linha[1],'MPS1'=>$linha[2],'MP3'=>$linha[3],'MP4'=>$linha[4],'MPS2'=>$linha[5],'Situacao'=>$linha2[52],'NivelConf'=>$linha2[53],'P1'=>$linha2[27],'P2'=>$linha2[28],'PS1'=>$linha2[29],'P3'=>$linha2[30],'P4'=>$linha2[31],'PS2'=>$linha2[32]);
 		echo json_encode($out);
 
 
