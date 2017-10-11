@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../../layouts/shared-service';
 import { AmChartsService } from '@amcharts/amcharts3-angular';
 
-
 @Component({
   moduleId: module.id,
   selector: 'page-dashboard',
@@ -19,7 +18,6 @@ export class PageDashboardComponent {
 
   constructor( private AmCharts: AmChartsService, 
                private http: Http,
-               private _sharedService: SharedService ) {
     this._sharedService.emitChange(this.pageTitle);
   }
   
@@ -163,6 +161,7 @@ export class PageDashboardComponent {
       'innerRadius': '60%',
       'labelText': '[[Situacao]]'
     });
+
 
     }
       );

@@ -53,7 +53,7 @@ import { AuthAdmin }                        from './services/auth-guard/auth-adm
     AppRoutingModule,
     UIModule,
     NiComponentsModule,
-    PagesModule
+    PagesModule,
   ],
   providers: [ 
      LoginService,
