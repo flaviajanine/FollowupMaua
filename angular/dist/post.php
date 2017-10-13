@@ -37,7 +37,7 @@ $params = array("tablename"=>$tablename, "header"=>$header, "data"=>$data);
 $body = json_encode($params);
 
 // Setup cURL
-	$ch = curl_init('https://ibm-watson-ml.mybluemix.net/pm/v1/score/P3?accesskey=5yXyFZuLy7uXMxMqFZsjXMG2lnvy48RqATPaknXgwstjpDer/bvOG9LshGMltn4uHxGxQ3pIogjgEOjN0TGDTcL0h32gVzPkwMbmHXNpi+H0ZOFm8wNYEEAISjNZ5ulwaR1+ZBm1y9+T/UDJtYvbXhzUtXufnZwJ+gQBSAR2uqE=');
+	$ch = curl_init('https://ibm-watson-ml.mybluemix.net/pm/v1/score/sitP3?accesskey=5yXyFZuLy7uXMxMqFZsjXMG2lnvy48RqATPaknXgwstjpDer/bvOG9LshGMltn4uHxGxQ3pIogjgEOjN0TGDTcL0h32gVzPkwMbmHXNpi+H0ZOFm8wNYEEAISjNZ5ulwaR1+ZBm1y9+T/UDJtYvbXhzUtXufnZwJ+gQBSAR2uqE=');
 	curl_setopt_array($ch, array(
     CURLOPT_POST => TRUE,
     CURLOPT_RETURNTRANSFER => TRUE,
@@ -70,27 +70,32 @@ $x = mysqli_num_rows($res);
 
 for ($i=1; $i <= $x; $i++){ 
 
+	$setar = "SET @@auto_increment_increment=1";
+	
+	mysqli_query($link, $setar) or die ("Erro na query SETAR"); 
 
-	$var1 = $responseData[0]['data'][$i-1][52];
-	$var2 = $responseData[0]['data'][$i-1][53];
-
-
-	$sql = "UPDATE tb_infos SET Aprovado = '$var1', Acuracia = '$var2' WHERE id = '$i'";
-
+	$sql = "INSERT into tb_predicoes (Exer,Esc,RA_HASH,KP,P1,P2,PS1,P3,P4,PS2,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,MT,MP,MF,Aprovado, Acuracia)
+	values ('".$responseData[0]['data'][$i][1]."','".$responseData[0]['data'][$i][2]."','".$responseData[0]['data'][$i][3]."','".$responseData[0]['data'][$i][25]."','".$responseData[0]['data'][$i][26]."','".$responseData[0]['data'][$i][27]."','".$responseData[0]['data'][$i][28]."','".$responseData[0]['data'][$i][29]."',
+	'".$responseData[0]['data'][$i][30]."','".$responseData[0]['data'][$i][31]."','".$responseData[0]['data'][$i][32]."','".$responseData[0]['data'][$i][34]."','".$responseData[0]['data'][$i][35]."','".$responseData[0]['data'][$i][36]."',
+	'".$responseData[0]['data'][$i][37]."','".$responseData[0]['data'][$i][38]."','".$responseData[0]['data'][$i][39]."','".$responseData[0]['data'][$i][40]."','".$responseData[0]['data'][$i][41]."','".$responseData[0]['data'][$i][42]."',
+	'".$responseData[0]['data'][$i][43]."','".$responseData[0]['data'][$i][44]."','".$responseData[0]['data'][$i][45]."','".$responseData[0]['data'][$i][46]."','".$responseData[0]['data'][$i][47]."','".$responseData[0]['data'][$i][48]."',
+	'".$responseData[0]['data'][$i][49]."','".$responseData[0]['data'][$i][50]."','".$responseData[0]['data'][$i][52]."','".$responseData[0]['data'][$i][53]."')";
+	
 	$r = mysqli_query($link, $sql) or die ("Erro na query insert");
 
+	}
 
-}
+	if($r==true)
+	{
+	   $out = array('erro'=>'0');
+	echo json_encode($out);
+	   
+	}
+	else
+	{
+		$out = array('erro'=>'1');
+	echo json_encode($out);
+	   
+	}
+	
 
-if($r==true)
-{
-   $out = array('erro'=>'0');
-echo json_encode($out);
-   
-}
-else
-{
-	$out = array('erro'=>'1');
-echo json_encode($out);
-   
-}

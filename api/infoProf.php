@@ -17,7 +17,7 @@ if(isset($_SESSION['categoria'])){
             $link = $objDb->conecta_mysql();
         
             
-            $sql = "SELECT AVG(P1),AVG(P2),AVG(PS1),AVG(P3),AVG(P4),AVG(PS2) FROM tb_infos";
+            $sql = "SELECT AVG(P1),AVG(P2),AVG(P3),AVG(P4) FROM tb_predicoes";
         
             $res = mysqli_query($link, $sql) or die ("Erro na query SELECT"); 
             
@@ -25,7 +25,7 @@ if(isset($_SESSION['categoria'])){
         
             //var_dump($linha1);
          
-            $sql1 = "SELECT AVG(P1),AVG(P2),AVG(PS1),AVG(P3),AVG(P4),AVG(PS2) FROM tb_historicos ";
+            $sql1 = "SELECT AVG(P1),AVG(P2),AVG(P3),AVG(P4) FROM tb_historicos ";
             
             $res2 = mysqli_query($link, $sql1) or die ("Erro na query SELECT"); 
             
@@ -33,14 +33,14 @@ if(isset($_SESSION['categoria'])){
         
             //var_dump($linha);
            
-            $sql2 = "SELECT COUNT(Aprovado) FROM tb_infos WHERE Aprovado = 'RP1' ";
+            $sql2 = "SELECT COUNT(Aprovado) FROM tb_predicoes WHERE Aprovado = 'RP1' ";
             $res3 = mysqli_query($link, $sql2) or die ("Erro na query SELECT"); 
         
             $linha2 = mysqli_fetch_array($res3);
             
             //var_dump($linha2);
         
-            $sql3 = "SELECT COUNT(Aprovado) FROM tb_infos WHERE Aprovado = 'TRC' ";
+            $sql3 = "SELECT COUNT(Aprovado) FROM tb_predicoes WHERE Aprovado = 'TRC' ";
             $res4 = mysqli_query($link, $sql3) or die ("Erro na query SELECT"); 
         
             $linha3 = mysqli_fetch_array($res4);
@@ -48,14 +48,14 @@ if(isset($_SESSION['categoria'])){
             //var_dump($linha3);
         
             
-            $sql4 = "SELECT COUNT(Aprovado) FROM tb_infos WHERE Aprovado = 'AP1' ";
+            $sql4 = "SELECT COUNT(Aprovado) FROM tb_predicoes WHERE Aprovado = 'AP1' ";
             $res5 = mysqli_query($link, $sql4) or die ("Erro na query SELECT"); 
         
             $linha4 = mysqli_fetch_array($res5);
             
            // var_dump($linha4);
 
-            $out = array('MP1'=>$linha1[0],'MP2'=>$linha1[1],'MPS1'=>$linha1[2],'MP3'=>$linha1[3],'MP4'=>$linha1[4],'MPS2'=>$linha1[5], 'MP1h'=>$linha[0],'MP2h'=>$linha[1],'MPS1h'=>$linha[2],'MP3h'=>$linha[3],'MP4h'=>$linha[4],'MPS2h'=>$linha[5], 'Aprovados'=>$linha4[0],'Reprovados'=>$linha2[0],'Trancaram'=>$linha3[0]);
+            $out = array('MP1'=>$linha1[0],'MP2'=>$linha1[1], 'MP3'=>$linha1[2],'MP4'=>$linha1[3], 'MP1h'=>$linha[0],'MP2h'=>$linha[1],'MP3h'=>$linha[2],'MP4h'=>$linha[3],'Aprovados'=>$linha4[0],'Reprovados'=>$linha2[0],'Trancaram'=>$linha3[0]);
             echo json_encode($out);
 
     }

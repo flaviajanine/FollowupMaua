@@ -20,6 +20,7 @@ export class HorizontalNavbarComponent implements OnInit {
   @Output() sidebarState = new EventEmitter();
   showOverlay: boolean;
   nome: string;
+  cat: string;
 
   constructor(
     private router: Router,
@@ -32,7 +33,9 @@ export class HorizontalNavbarComponent implements OnInit {
     .subscribe( (res: Response) =>
     {
       let data = res.json();      
-      this.nome = data.NOME;  
+      this.nome = data.NOME; 
+      this.cat = data.CATEGORIA; 
+
     }
    ); 
 
@@ -42,6 +45,23 @@ export class HorizontalNavbarComponent implements OnInit {
 
 
       
+  }
+
+  home(){
+    
+    switch (this.cat){
+      case '0':
+      this.router.navigate(['/default-layout/dashboard']);
+      break;
+      case '1':
+      this.router.navigate(['/default-layout/dashboard-2']);
+      break;
+      case '2':
+      this.router.navigate(['/default-layout/dashboard-3']);
+      break;
+
+    }
+
   }
 
   sair(){

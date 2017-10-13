@@ -77,7 +77,7 @@ for ($i=1; $i <= $x; $i++){
 	mysqli_query($link, $setar) or die ("Erro na query SETAR"); 
 	
 
-	$var1 = $responseData[0]['data'][$i][52];
+	$var1 = $responseData[0]['data'][$i-1][52];
 
 	$sql = "UPDATE tb_predicoes SET P4 = '$var1' WHERE id = '$i'";
 

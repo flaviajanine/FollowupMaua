@@ -18,6 +18,7 @@ export class PageDashboardComponent {
 
   constructor( private AmCharts: AmChartsService, 
                private http: Http,
+               private _sharedService: SharedService) {
     this._sharedService.emitChange(this.pageTitle);
   }
   

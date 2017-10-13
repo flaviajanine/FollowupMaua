@@ -54,9 +54,6 @@ export class PageDashboard3Component implements OnInit {
       let url = './post.php';
       this.http.get(url)
       .subscribe();
-      let url2 = './getnotas.php';
-      this.http.get(url2)
-      .subscribe();
   }
 
   relatorio(){
