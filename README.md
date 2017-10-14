@@ -5,9 +5,9 @@
 TCC dos alunos de Engenharia de Computação.
 
 ## Deploy no localhost
-* dentro do dir MauAcompanha\angular
+* dentro do dir \angular
 ```
-C:\xampp\htdocs\MauAcompanha\angular>npm install -g @angular/cli
+npm install -g @angular/cli
 ```
 * Instalar os node modules
 ```
