@@ -54,6 +54,7 @@ export class PageDashboard3Component implements OnInit {
       let url = './post.php';
       this.http.get(url)
       .subscribe();
+      alert("Resultados enviados para o banco de dados");
   }
 
   relatorio(){

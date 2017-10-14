@@ -17,7 +17,7 @@ if(isset($_SESSION['categoria'])){
             $link = $objDb->conecta_mysql();
         
             
-            $sql = "SELECT AVG(P1),AVG(P2),AVG(P3),AVG(P4) FROM tb_predicoes";
+            $sql = "SELECT AVG(P1),AVG(P2),AVG(P3),AVG(P4) FROM tb_infos";
         
             $res = mysqli_query($link, $sql) or die ("Erro na query SELECT"); 
             

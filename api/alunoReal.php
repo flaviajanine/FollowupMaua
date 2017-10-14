@@ -29,12 +29,17 @@ if(isset($_SESSION['categoria'])){
 
 	if (isset($linha[0])) {
 
-		$sql = "SELECT * FROM tb_predicoes WHERE RA_HASH = '".$linha[0]."' ";
+		$sql = "SELECT * FROM tb_infos WHERE RA_HASH = '".$linha[0]."' ";
 
 		$res = mysqli_query($link, $sql) or die ("Erro na query SELECT");
 
 		$linha2 = mysqli_fetch_array($res);
 
+		$sql2 = "SELECT * FROM tb_predicoes WHERE RA_HASH = '".$linha[0]."' ";
+		
+		$res1 = mysqli_query($link, $sql2) or die ("Erro na query SELECT");
+		
+		$linha3 = mysqli_fetch_array($res1);
 
 		$sql1 = "SELECT AVG(P1),AVG(P2),AVG(P3),AVG(P4) FROM tb_historicos ";
 
@@ -43,8 +48,7 @@ if(isset($_SESSION['categoria'])){
 		$linha = mysqli_fetch_array($res2);
 
 
-
-		$out = array('MP1'=>$linha[0],'MP2'=>$linha[1],'MP3'=>$linha[2],'MP4'=>$linha[3],'Situacao'=>$linha2[52],'NivelConf'=>$linha2[53],'P1'=>$linha2[27],'P2'=>$linha2[28],'P3'=>$linha2[30],'P4'=>$linha2[31]);
+		$out = array('MP1'=>$linha[0],'MP2'=>$linha[1],'MP3'=>$linha[2],'MP4'=>$linha[3],'Situacao'=>$linha3[52],'NivelConf'=>$linha3[53],'P1'=>$linha2[27],'P2'=>$linha2[28],'P3'=>$linha2[30],'P4'=>$linha2[31]);
 		echo json_encode($out);
 
 
@@ -61,8 +65,3 @@ if(isset($_SESSION['categoria'])){
 	
 
 }
-
-	
-
-
-

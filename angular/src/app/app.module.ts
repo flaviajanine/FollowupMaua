@@ -30,6 +30,10 @@ import { AuthGuard }                        from './services/auth-guard/auth-gua
 import { AuthAluno }                        from './services/auth-guard/auth-aluno.service';
 import { AuthProf }                         from './services/auth-guard/auth-prof.service';
 import { AuthAdmin }                        from './services/auth-guard/auth-admin.service';
+import { PredictService }                   from './services/predict.service';
+import { AlunosService }                    from './services/alunos.service';
+import { ProfsService }                     from './services/profs.service';
+
 
 @NgModule({
 
@@ -63,6 +67,9 @@ import { AuthAdmin }                        from './services/auth-guard/auth-adm
      AuthAdmin,
      AuthAluno,
      AuthProf,
+     PredictService,
+     AlunosService,
+     ProfsService
   ],
   bootstrap: [ AppComponent ]
 })

@@ -29,7 +29,7 @@ if(isset($_SESSION['categoria'])){
 
 	if (isset($linha[0])) {
 
-		$sql = "SELECT * FROM tb_predicoes WHERE RA_HASH = '".$linha[0]."' ";
+		$sql = "SELECT * FROM tb_infos WHERE RA_HASH = '".$linha[0]."' ";
 
 		$res = mysqli_query($link, $sql) or die ("Erro na query SELECT");
 
@@ -61,8 +61,3 @@ if(isset($_SESSION['categoria'])){
 	
 
 }
-
-	
-
-
-

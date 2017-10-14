@@ -1,15 +1,40 @@
+<div class="row">
+    <div class="col-md-6">
+  <ni-card [title]="'A partir de qual prova incluir na predição'" class="mb-0">
+      <form>
+        <md-radio-group name="group-1" [(ngModel)]="prova">
+          <md-radio-button [value]=1>P1</md-radio-button>
+          <md-radio-button [value]=2>P2</md-radio-button>
+          <md-radio-button [value]=3>P3</md-radio-button>
+        </md-radio-group>
+        <button ni-button [gradient]="['#252D47', '#3366cc']" type="button" style="color: white" (click)="predict()" class="btn-lg"><i class="fa fa-cloud-upload"></i> Enviar</button>
+      </form>
+  </ni-card>
+  </div>
+
+  <div class="col-md-6">
+      <ni-card [customBgColor]="'rgba(100,181,246,0.9)'" [customColor]="'#fff'" [bgImage]="'assets/content/card-3.jpg'" class="info-card">
+        <button ni-button type="button" style="color: white; background-color: Transparent; outline:none; border: none; cursor:pointer; overflow: hidden;" (click)="graficos()" class="btn-lg">
+          <i class="fa fa-lightbulb-o"></i> ATUALIZAR</button>
+     </ni-card>
+  </div>
+
+
+</div>
+
+<br>
 
 <div class="row">
-    <!-- <md-progress-bar mode="indeterminate" class="mb-0" id="progress" style="display:block;"></md-progress-bar> -->
-    <div class="col-lg-6">
-      <ni-card title="Geometria Analítica - Provas">
-        <div id="amchart-3" [style.width.%]="100" [style.height.px]="400"></div>
-      </ni-card>
-    </div>
+  <!-- <md-progress-bar mode="indeterminate" class="mb-0" id="progress" style="display:block;"></md-progress-bar> -->
+  <div class="col-lg-6">
+    <ni-card title="Geometria Analítica - Provas">
+      <div id="amchart-3" [style.width.%]="100" [style.height.px]="400"></div>
+    </ni-card>
+  </div>
 
-    <div class="col-lg-6">
-      <ni-card title="Situação">
-        <div id="amchart-5" [style.width.%]="100" [style.height.px]="400"></div>
-      </ni-card>
-    </div>
+  <div class="col-lg-6">
+    <ni-card title="Situação">
+      <div id="amchart-5" [style.width.%]="100" [style.height.px]="400"></div>
+    </ni-card>
+  </div>
 </div>
