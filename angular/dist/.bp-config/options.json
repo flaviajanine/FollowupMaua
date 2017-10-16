@@ -1,0 +1,5 @@
+{
+    "PHP_VERSION": "{PHP_70_LATEST}",
+    "WEBDIR": "public",
+    "PHP_EXTENSIONS": ["curl", "mysqli", "mbstring"]
+}

@@ -1,40 +1,52 @@
 <!--
 <ni-breadcrumb [menu]="breadcrumb" [style]="'custom1'" class="mb-4"></ni-breadcrumb>
 -->
-<div class="row">
-<div class="col-xl-12">
-  <ni-card [title]="'Envio de um novo arquivo'">
-    <p>Escolha um arquivo para enviar.</p>
-    <form>
-      <div class="form-group">
-        <input type="file" id="selectFile" name="selectFile" class="btn btn-default"/>
-        <button ni-button [gradient]="['#252D47', '#3366cc']" type="button" style="color: white" (click)="uploadFile()" class="btn-lg"><i class="fa fa-file"></i> Enviar</button>
-    
-      </div>
-
-    </form>
-  </ni-card>
-</div>
-</div>
-<div class="row" style='height:"200"'>
-<div class="col-md-6">
-    <ni-card [customBgColor]="'rgba(100,181,246,0.9)'" [customColor]="'#fff'" [bgImage]="'assets/content/card-3.jpg'" class="info-card">
-      <button ni-button type="button" style="color: white; background-color: Transparent; outline:none; border: none; cursor:pointer; overflow: hidden;" (click)="predict()" class="btn-lg">
-        <i class="fa fa-lightbulb-o"></i> GERAR PREDIÇÕES</button>
-     <!-- <div class="title text-uppercase">
+<ni-card>
+  <md-tab-group>
+    <md-tab label="Novo arquivo">
+      <br>
+      <div class="row" style="width:100%">
+      
+          <ni-card [title]="'Envio de um novo arquivo'">
+            <p>Escolha um arquivo para enviar.</p>
+            <form>
+              <div class="form-group">
+                <input type="file" id="selectFile" name="selectFile" class="btn btn-default"/>
+                <button ni-button [gradient]="['#252D47', '#3366cc']" type="button" style="color: white" (click)="uploadFile()" class="btn-lg"><i class="fa fa-file"></i> Enviar</button>
+            
+              </div>
+        
+            </form>
+          </ni-card>
         </div>
- <ni-badge [customColor]="'rgba(255,255,255,0.3)'" [borderRadius]="false"></ni-badge> -->
-      </ni-card>
-</div>
+      </md-tab>
+      <md-tab label="Relatório">
+          <br>
+        <div class="row" style="width:100%">
+          <div class="col-md-6">
+              <ni-card [customBgColor]="'rgba(100,181,246,0.9)'" [customColor]="'#fff'" [bgImage]="'assets/content/card-3.jpg'" class="info-card">
+                <button ni-button type="button" style="color: white; background-color: Transparent; outline:none; border: none; cursor:pointer; overflow: hidden;" (click)="predict()" class="btn-lg">
+                  <i class="fa fa-lightbulb-o"></i> GERAR PREDIÇÕES</button>
+                </ni-card>
+          </div>
+          
+          <div class="col-md-6">
+              <md-input-container>
+                  <input mdInput placeholder="E-mail"  value="" class="form-control">
+                   </md-input-container>
+                   <button ni-button [gradient]="['#252D47', '#3366cc']" type="button" style="color: white" (click)="relatorio()"  class="btn-lg"><i class=" fa fa-line-chart"></i> Enviar Relatório</button>
+          </div>
+          </div>
 
-<div class="col-md-6">
-  <ni-card [customBgColor]="'rgba(100,181,246,0.9)'" [customColor]="'#fff'" [bgImage]="'assets/content/card-6.jpg'" class="info-card">
-
-    <button ni-button type="button" style="color: white; background-color: Transparent; outline:none; border: none; cursor:pointer; overflow: hidden;" (click)="relatorio()" class="btn-lg">
-      <i class=" fa fa-line-chart"></i> GERAR RELATÓRIO</button>
-     <!--
-    <div class="title text-uppercase" (click) = "relatorio()">Gerar Relatório</div>
-    <ni-badge [customColor]="'rgba(255,255,255,0.3)'" [borderRadius]="false"></ni-badge> -->
-  </ni-card>
-</div>
-</div>
+        </md-tab>
+        <md-tab label="Curso">
+          <h3>Cadastrar Curso</h3>
+          </md-tab>
+        <md-tab label="Professor">
+          <h3>Cadastrar Professor</h3>
+           </md-tab>
+        <md-tab label="Disciplina">
+          <h3>Cadastrar Disciplina</h3>
+        </md-tab>
+      </md-tab-group>
+    </ni-card>

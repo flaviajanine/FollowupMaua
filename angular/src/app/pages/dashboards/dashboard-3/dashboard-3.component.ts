@@ -1,4 +1,4 @@
-import { FormGroup } from '@angular/forms';
+import { FormGroup,  FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Http, Response } from '@angular/http';
 import { Component, OnInit, ElementRef } from '@angular/core';
