@@ -1,4 +1,4 @@
-import { FormGroup,  FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Http, Response } from '@angular/http';
 import { Component, OnInit, ElementRef } from '@angular/core';
@@ -17,6 +17,8 @@ import 'rxjs/add/operator/catch';
 export class PageDashboard3Component implements OnInit {
   pageTitle: string = 'Administrador';
   private chart: any;
+  form: FormGroup;
+  email: FormControl;
 
   constructor(private _sharedService: SharedService,
               private elem: ElementRef,
@@ -26,7 +28,10 @@ export class PageDashboard3Component implements OnInit {
   }
 
   ngOnInit() {
-
+    this.form = new FormGroup({
+      email: new FormControl('', Validators.email)
+    });
+    
   }
   ngOnDestroy() {
 
@@ -58,8 +63,35 @@ export class PageDashboard3Component implements OnInit {
   }
 
   relatorio(){
-    
+    this.http.get('./pdf.php')
+    .subscribe(
+      (res: Response) =>{
+        if(res.json().File == "1"){
+          console.log('Arquivo criado!');
+          window.open('./alunos.pdf');
+        }
+      }
+    );
   }
+
+  onSubmit(){
+
+    let body = this.form.value;
+    console.log(body);
+   
+    this.http.post('./email.php',body)
+    .subscribe(
+      (res: Response) => {
+         alert("E-mail enviado com sucesso!");
+        },
+      error => {
+        console.log(error);
+        alert("Erro no envio.");
+      }
+    );
+
+  }
+
   // Pie
   public pieChartLabels: string[] = [
     'Angular',

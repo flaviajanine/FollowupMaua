@@ -21,6 +21,15 @@ export class PageDashboard2Component implements OnInit {
   dash;
   add: string;
 
+  MP1: number;
+  MP2: number;
+  MP3: number;
+  MP4: number;
+  MP1h: number;
+  MP2h: number;
+  MP3h: number;
+  MP4h: number;
+
   constructor(private AmCharts: AmChartsService,
     private _sharedService: SharedService,
     private http: Http,
@@ -31,8 +40,16 @@ export class PageDashboard2Component implements OnInit {
   }
 
   relatorio(){
-    
+    this.http.get('./pdf.php')
+    .subscribe(
+      (res: Response) =>{
+        if(res.json().File == "1"){
+          window.open('./alunos.pdf');
+        }
+      }
+    );
   }
+
   predict(){
     switch(this.prova){
       case 1:
@@ -75,10 +92,6 @@ export class PageDashboard2Component implements OnInit {
       let MP2 = parseFloat(data.MP2);
       let MP3 = parseFloat(data.MP3);
       let MP4 = parseFloat(data.MP4);
-      let MP1h = parseFloat(data.MP1h);
-      let MP2h = parseFloat(data.MP2h);
-      let MP3h = parseFloat(data.MP3h);
-      let MP4h = parseFloat(data.MP4h);
 
       this.add = '(predição)';
       this.alpha = 0.2;
@@ -103,13 +116,13 @@ export class PageDashboard2Component implements OnInit {
         {
           this.grafdata.push({
             prova: 'P1',
-            nota: MP1,
-            Mgeral: MP1h
+            nota: this.MP1,
+            Mgeral: this.MP1h
           });
           this.grafdata.push({
             prova: 'P2',
             nota: MP2,
-            Mgeral: MP2h,
+            Mgeral: this.MP2h,
             dashLengthColumn: this.dash,
             alpha: this.alpha,
             additional: this.add
@@ -117,7 +130,7 @@ export class PageDashboard2Component implements OnInit {
           this.grafdata.push({
             prova: 'P3',
             nota: MP3,
-            Mgeral: MP3h,
+            Mgeral: this.MP3h,
             dashLengthColumn: this.dash,
             alpha: this.alpha,
             additional: this.add
@@ -125,7 +138,7 @@ export class PageDashboard2Component implements OnInit {
           this.grafdata.push({
             prova: 'P4',
             nota: MP4,
-            Mgeral: MP4h,
+            Mgeral: this.MP4h,
             dashLengthColumn: this.dash,
             alpha: this.alpha,
             additional: this.add
@@ -136,18 +149,18 @@ export class PageDashboard2Component implements OnInit {
         {
             this.grafdata.push({
               prova: 'P1',
-              nota: MP1,
-              Mgeral: MP1h
+              nota: this.MP1,
+              Mgeral: this.MP1h
             });
             this.grafdata.push({
               prova: 'P2',
-              nota: MP2,
-              Mgeral: MP2h
+              nota: this.MP2,
+              Mgeral: this.MP2h
             });
             this.grafdata.push({
               prova: 'P3',
               nota: MP3,
-              Mgeral: MP3h,
+              Mgeral: this.MP3h,
               dashLengthColumn: this.dash,
               alpha: this.alpha,
               additional: this.add
@@ -155,7 +168,7 @@ export class PageDashboard2Component implements OnInit {
             this.grafdata.push({
               prova: 'P4',
               nota: MP4,
-              Mgeral: MP4h,
+              Mgeral: this.MP4h,
               dashLengthColumn: this.dash,
               alpha: this.alpha,
               additional: this.add
@@ -166,23 +179,23 @@ export class PageDashboard2Component implements OnInit {
         {
             this.grafdata.push({
               prova: 'P1',
-              nota: MP1,
-              Mgeral: MP1h
+              nota: this.MP1,
+              Mgeral: this.MP1h
             });
             this.grafdata.push({
               prova: 'P2',
-              nota: MP2,
-              Mgeral: MP2h
+              nota: this.MP2,
+              Mgeral: this.MP2h
             });
             this.grafdata.push({
               prova: 'P3',
-              nota: MP3,
-              Mgeral: MP3h
+              nota: this.MP3,
+              Mgeral: this.MP3h
             });
             this.grafdata.push({
               prova: 'P4',
               nota: MP4,
-              Mgeral: MP4h,
+              Mgeral: this.MP4h,
               dashLengthColumn: this.dash,
               alpha: this.alpha,
               additional: this.add
@@ -276,14 +289,14 @@ export class PageDashboard2Component implements OnInit {
     let Ap = parseFloat(data.Aprovados);
     let Rp = parseFloat(data.Reprovados);
     let Tc = parseFloat(data.Trancaram);
-    let MP1 = parseFloat(data.MP1);
-    let MP2 = parseFloat(data.MP2);
-    let MP3 = parseFloat(data.MP3);
-    let MP4 = parseFloat(data.MP4);
-    let MP1h = parseFloat(data.MP1h);
-    let MP2h = parseFloat(data.MP2h);
-    let MP3h = parseFloat(data.MP3h);
-    let MP4h = parseFloat(data.MP4h);
+    this.MP1 = parseFloat(data.MP1);
+    this.MP2 = parseFloat(data.MP2);
+    this.MP3 = parseFloat(data.MP3);
+    this.MP4 = parseFloat(data.MP4);
+    this.MP1h = parseFloat(data.MP1h);
+    this.MP2h = parseFloat(data.MP2h);
+    this.MP3h = parseFloat(data.MP3h);
+    this.MP4h = parseFloat(data.MP4h);
 
     this.grafdata2.push({
       nAlunos: Ap,
@@ -304,23 +317,23 @@ export class PageDashboard2Component implements OnInit {
 
     this.grafdata.push({
       prova: 'P1',
-      nota: MP1,
-      Mgeral: MP1h
+      nota: this.MP1,
+      Mgeral: this.MP1h
     });
     this.grafdata.push({
       prova: 'P2',
-      nota: MP2,
-      Mgeral: MP2h
+      nota: this.MP2,
+      Mgeral: this.MP2h
     });
     this.grafdata.push({
       prova: 'P3',
-      nota: MP3,
-      Mgeral: MP3h
+      nota: this.MP3,
+      Mgeral: this.MP3h
     });
     this.grafdata.push({
       prova: 'P4',
-      nota: MP4,
-      Mgeral: MP4h,
+      nota: this.MP4,
+      Mgeral: this.MP4h,
       dashLengthColumn: 5,
       alpha: 0.2,
       additional: '(projection)'

@@ -8,7 +8,6 @@
       <div class="row" style="width:100%">
       
           <ni-card [title]="'Envio de um novo arquivo'">
-            <p>Escolha um arquivo para enviar.</p>
             <form>
               <div class="form-group">
                 <input type="file" id="selectFile" name="selectFile" class="btn btn-default"/>
@@ -26,17 +25,36 @@
           <div class="col-md-6">
               <ni-card [customBgColor]="'rgba(100,181,246,0.9)'" [customColor]="'#fff'" [bgImage]="'assets/content/card-3.jpg'" class="info-card">
                 <button ni-button type="button" style="color: white; background-color: Transparent; outline:none; border: none; cursor:pointer; overflow: hidden;" (click)="predict()" class="btn-lg">
-                  <i class="fa fa-lightbulb-o"></i> GERAR PREDIÇÕES</button>
+                  <i class="fa fa-lightbulb-o"></i> Gerar Predições</button>
                 </ni-card>
           </div>
-          
+
+        <div class="col-md-6">
+          <ni-card [customBgColor]="'rgba(100,181,246,0.9)'" [customColor]="'#fff'" [bgImage]="'assets/content/card-6.jpg'" class="info-card">
+            
+                <button ni-button type="button" style="color: white; background-color: Transparent; outline:none; border: none; cursor:pointer; overflow: hidden;" (click)="relatorio()" class="btn-lg">
+                  <i class=" fa fa-line-chart"></i> Gerar Relatório</button>
+                 </ni-card>
+        </div>
+      </div>
+      <div class="row" style="width:100%">
           <div class="col-md-6">
-              <md-input-container>
-                  <input mdInput placeholder="E-mail"  value="" class="form-control">
-                   </md-input-container>
-                   <button ni-button [gradient]="['#252D47', '#3366cc']" type="button" style="color: white" (click)="relatorio()"  class="btn-lg"><i class=" fa fa-line-chart"></i> Enviar Relatório</button>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              
+                  <div class="form-group">
+                    <md-input-container>
+                      <input mdInput placeholder="E-mail" id="email" formControlName="email" value="" class="form-control">
+                     <!-- <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+                        <div *ngIf="email.errors.required">E-mail inválido!</div>   
+                      </div>  -->
+                       </md-input-container>
+                  </div>
+              
+                  <button md-raised-button color="primary" type="submit"><i class="fa fa-envelope"></i> Enviar Relatório</button>
+                  </form>
           </div>
           </div>
+          
 
         </md-tab>
         <md-tab label="Curso">

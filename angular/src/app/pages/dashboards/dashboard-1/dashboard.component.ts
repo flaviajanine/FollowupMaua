@@ -21,6 +21,14 @@ export class PageDashboardComponent {
   alpha;
   dash;
   add: string;
+  P1: number;
+  P2: number;
+  P3: number;
+  P4: number;
+  MP1: number;
+  MP2: number;
+  MP3: number;
+  MP4: number;
 
   constructor(private AmCharts: AmChartsService,
     private http: Http,
@@ -36,20 +44,20 @@ export class PageDashboardComponent {
     switch(this.prova){
       case 1:
       {
-        this.http.get('./getnotaP2.php').subscribe();
-        this.http.get('./getnotaP3.php').subscribe();
-        this.http.get('./getnotaP4.php').subscribe();
+        this.http.get('./getnotaP2aluno.php').subscribe();
+        this.http.get('./getnotaP3aluno.php').subscribe();
+        this.http.get('./getnotaP4aluno.php').subscribe();
         break;
       }
       case 2:
       {
-        this.http.get('./getnotaP3.php').subscribe();
-        this.http.get('./getnotaP4.php').subscribe();
+        this.http.get('./getnotaP3aluno.php').subscribe();
+        this.http.get('./getnotaP4aluno.php').subscribe();
         break;
       }
       case 3:
       {
-        this.http.get('./getnotaP4.php').subscribe();
+        this.http.get('./getnotaP4aluno.php').subscribe();
         break;
       }
       
@@ -72,10 +80,6 @@ export class PageDashboardComponent {
         let P2 = parseFloat(data.P2);
         let P3 = parseFloat(data.P3);
         let P4 = parseFloat(data.P4);
-        let MP1 = parseFloat(data.MP1);
-        let MP2 = parseFloat(data.MP2);
-        let MP3 = parseFloat(data.MP3);
-        let MP4 = parseFloat(data.MP4);
         this.add = '(predição)';
         this.alpha = 0.2;
         this.dash = 5;
@@ -85,13 +89,13 @@ export class PageDashboardComponent {
           {
             this.grafdata.push({
               prova: 'P1',
-              nota: P1,
-              Mgeral: MP1
+              nota: this.P1,
+              Mgeral: this.MP1
             });
             this.grafdata.push({
               prova: 'P2',
               nota: P2,
-              Mgeral: MP2,
+              Mgeral: this.MP2,
               dashLengthColumn: this.dash,
               alpha: this.alpha,
               additional: this.add
@@ -99,7 +103,7 @@ export class PageDashboardComponent {
             this.grafdata.push({
               prova: 'P3',
               nota: P3,
-              Mgeral: MP3,
+              Mgeral: this.MP3,
               dashLengthColumn: this.dash,
               alpha: this.alpha,
               additional: this.add
@@ -107,7 +111,7 @@ export class PageDashboardComponent {
             this.grafdata.push({
               prova: 'P4',
               nota: P4,
-              Mgeral: MP4,
+              Mgeral: this.MP4,
               dashLengthColumn: this.dash,
               alpha: this.alpha,
               additional: this.add
@@ -118,18 +122,18 @@ export class PageDashboardComponent {
           {
             this.grafdata.push({
               prova: 'P1',
-              nota: P1,
-              Mgeral: MP1
+              nota: this.P1,
+              Mgeral: this.MP1
             });
             this.grafdata.push({
               prova: 'P2',
-              nota: P2,
-              Mgeral: MP2
+              nota: this.P2,
+              Mgeral: this.MP2
             });
             this.grafdata.push({
               prova: 'P3',
               nota: P3,
-              Mgeral: MP3,
+              Mgeral: this.MP3,
               dashLengthColumn: this.dash,
               alpha: this.alpha,
               additional: this.add
@@ -137,7 +141,7 @@ export class PageDashboardComponent {
             this.grafdata.push({
               prova: 'P4',
               nota: P4,
-              Mgeral: MP4,
+              Mgeral: this.MP4,
               dashLengthColumn: this.dash,
               alpha: this.alpha,
               additional: this.add
@@ -148,23 +152,23 @@ export class PageDashboardComponent {
           {
             this.grafdata.push({
               prova: 'P1',
-              nota: P1,
-              Mgeral: MP1
+              nota: this.P1,
+              Mgeral: this.MP1
             });
             this.grafdata.push({
               prova: 'P2',
-              nota: P2,
-              Mgeral: MP2
+              nota: this.P2,
+              Mgeral: this.MP2
             });
             this.grafdata.push({
               prova: 'P3',
-              nota: P3,
-              Mgeral: MP3
+              nota: this.P3,
+              Mgeral: this.MP3
             });
             this.grafdata.push({
               prova: 'P4',
               nota: P4,
-              Mgeral: MP4,
+              Mgeral: this.MP4,
               dashLengthColumn: this.dash,
               alpha: this.alpha,
               additional: this.add
@@ -263,14 +267,14 @@ export class PageDashboardComponent {
         let data = res.json();
 
         let sit = data.Situacao;
-        let P1 = parseFloat(data.P1);
-        let P2 = parseFloat(data.P2);
-        let P3 = parseFloat(data.P3);
-        let P4 = parseFloat(data.P4);
-        let MP1 = parseFloat(data.MP1);
-        let MP2 = parseFloat(data.MP2);
-        let MP3 = parseFloat(data.MP3);
-        let MP4 = parseFloat(data.MP4);
+        this.P1 = parseFloat(data.P1);
+        this.P2 = parseFloat(data.P2);
+        this.P3 = parseFloat(data.P3);
+        this.P4 = parseFloat(data.P4);
+        this.MP1 = parseFloat(data.MP1);
+        this.MP2 = parseFloat(data.MP2);
+        this.MP3 = parseFloat(data.MP3);
+        this.MP4 = parseFloat(data.MP4);
 
         if (data.Situacao === "AP1") { this.sit2 = "RP1"; } else { this.sit2 = "AP1"; }
 
@@ -289,23 +293,23 @@ export class PageDashboardComponent {
 
         this.grafdata.push({
           prova: 'P1',
-          nota: P1,
-          Mgeral: MP1
+          nota: this.P1,
+          Mgeral: this.MP1
         });
         this.grafdata.push({
           prova: 'P2',
-          nota: P2,
-          Mgeral: MP2
+          nota: this.P2,
+          Mgeral: this.MP2
         });
         this.grafdata.push({
           prova: 'P3',
-          nota: P3,
-          Mgeral: MP3
+          nota: this.P3,
+          Mgeral: this.MP3
         });
         this.grafdata.push({
           prova: 'P4',
-          nota: P4,
-          Mgeral: MP4
+          nota: this.P4,
+          Mgeral: this.MP4
         });
 
         this.chart = this.AmCharts.makeChart('amchart-3', {
