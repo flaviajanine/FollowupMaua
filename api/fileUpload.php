@@ -20,7 +20,7 @@ $link = $objDb->conecta_mysql();
 	if($_FILES["selectFile"]["size"] > 0)
 	{
 				$file = fopen($filename, "r");
-				//$getData = fgetcsv($file, 10000, ";");
+				$getData = fgetcsv($file, 10000, ";");
 
 				while (($getData = fgetcsv($file, 10000, ";")) !== FALSE){
 

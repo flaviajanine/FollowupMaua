@@ -57,7 +57,7 @@ use PHPMailer\PHPMailer\PHPMailer;
  $mail->Username = 'followupmaua@gmail.com'; //email
  
  //Password to use for SMTP authentication
- $mail->Password = 'maua2017'; //senha
+ $mail->Password = 'Compmaua201703'; //senha
  
  //Set who the message is to be sent from
  $mail->SetFrom('followupmaua@gmail.com', 'FollowUpMaua'); //email
