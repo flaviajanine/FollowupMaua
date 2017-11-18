@@ -45,7 +45,7 @@ export class PageSignUp1Component implements OnInit {
     {value: '8', viewValue: 'Engenharia de Produção'},
     {value: '9', viewValue: 'Engenharia Civil'}
   ];
-  private url = './../../api/cadastrarAluno.php';
+  private url = './cadastrarAluno.php';
   
     ngOnInit() { 
       this.createFormControls();
