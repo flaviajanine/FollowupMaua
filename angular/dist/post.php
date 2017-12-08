@@ -12,7 +12,6 @@ require_once('config.php');
 $header = ["Exer", "Esc", "RA_HASH", "Cur", "Ser", "Per", "Fingr", "StIni", "StFin", "DtSitCur", "CdDis", "CurDis", "SerDis", "PerDis", "G", "T", "L", "OriDisc", "StIniDisc", "StFinDisc", "DtStDisc", "SemDisc", "CritDisc", "QtTrabalhos", "KT", "KP", "P1", "P2", "PS1", "P3", "P4", "PS2", "T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10", "T11", "T12", "T13", "T14", "T15", "T16", "MT", "MP", "MF"];
 
 
-//PEGAR DINAMICAMENTE O NOME DO MODELO.
 $tablename = "Treino1.xls";
 
 $objDb = new db();
@@ -62,7 +61,6 @@ $responseData = json_decode($response, TRUE);
 
 //print_r($responseData);
 
-#	GUARDAR AS RESPOSTAS NO BANCO DE DADOS (INSERT GERAL);
 
 $x = mysqli_num_rows($res);
 

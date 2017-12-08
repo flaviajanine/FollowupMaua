@@ -33,7 +33,7 @@ import { AuthAdmin }                        from './services/auth-guard/auth-adm
 import { PredictService }                   from './services/predict.service';
 import { AlunosService }                    from './services/alunos.service';
 import { ProfsService }                     from './services/profs.service';
-
+import { CadastroService }                  from './services/cadastro.service';
 
 @NgModule({
 
@@ -62,6 +62,7 @@ import { ProfsService }                     from './services/profs.service';
   providers: [ 
      LoginService,
      LogoutService,
+     CadastroService,
      ApiService,
      AuthGuard,
      AuthAdmin,

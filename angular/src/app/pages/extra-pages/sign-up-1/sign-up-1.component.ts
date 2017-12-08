@@ -1,3 +1,4 @@
+import { CadastroService } from './../../../services/cadastro.service';
 import { Component, OnInit, NgModule, Pipe, } from '@angular/core';
 import { ReactiveFormsModule, 
           FormsModule, 
@@ -7,7 +8,7 @@ import { ReactiveFormsModule,
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { Router } from '@angular/router';
-import { Http, Response } from '@angular/http';
+import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
@@ -45,7 +46,7 @@ export class PageSignUp1Component implements OnInit {
     {value: '8', viewValue: 'Engenharia de Produção'},
     {value: '9', viewValue: 'Engenharia Civil'}
   ];
-  private url = './cadastrarAluno.php';
+  
   
     ngOnInit() { 
       this.createFormControls();
@@ -54,7 +55,7 @@ export class PageSignUp1Component implements OnInit {
   
  constructor(
    private router: Router,
-   private http: Http
+   private cadastro: CadastroService
   ){}
  
 
@@ -63,7 +64,7 @@ export class PageSignUp1Component implements OnInit {
 
      console.log(body);
   
-     this.http.post(this.url, body)
+     this.cadastro.cadastrar(body)
      .map( (res: Response) =>
      {
       let response = res.json();

@@ -9,9 +9,9 @@ class db {
 
 	//IBM Credencial
 	private $host = 'us-cdbr-sl-dfw-01.cleardb.net';
-	private $usuario_db = 'b8c11fda5798fe';
-	private $senha_db = '6e7ae3bc';
-	private $data_base = 'ibmx_d921d6818ad95d7';
+	private $usuario_db = 'b18bb65737b3b9';
+	private $senha_db = '50249e97';
+	private $data_base = 'ibmx_8f86a3388a38e34';
 
 	//LocalHost Credencial
 	#private $host = 'localhost';
